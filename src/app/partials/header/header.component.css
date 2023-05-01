@@ -1,0 +1,39 @@
+div{
+    display: inline-block;
+}
+.logo{
+    display: flex;
+    margin:auto;
+
+}
+
+.haut{
+    justify-content: right;
+    position: absolute;
+    left: auto;
+    right: 0%;
+}
+
+nav{
+    background: var(--rose);
+}
+ul, li{
+    display: inline-block;
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+}
+
+.liens{
+    text-align: center;
+    color: var(--bleu-fonce);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.liens:hover{
+    background: var(--bleu-fonce);
+    color : var(--rose);
+    transition: 0,2s;
+}
