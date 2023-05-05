@@ -1,43 +1,64 @@
-div{
-    display: inline-block;
+header{
+    position: sticky;
+    top: 0;
+
 }
-.logo{
+.haut {
     display: flex;
-    margin:auto;
-
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    
+  }
+.centrale{
+    margin: 0 auto;
+  }
+.centrale img{
+    height: 100px;
+    width: 200px;
 }
+  
+  .images-droite {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-.haut{
-    justify-content: right;
-    position: absolute;
-    left: auto;
-    right: 0%;
-}
+  }
+  
+  .images-droite img {
+    margin-left: 15px; /* Ajouter une marge entre les images */
+    width: 30px;
+    height: 30px;
 
-nav{
-    background: var(--rose);
-}
+  }
+
+  .bandeau{
+    display: flex;
+    align-items: center;
+    background:#f1baa6;
+
+  }
+
 ul, li{
     display: inline-block;
     padding-top: 3px;
     padding-bottom: 3px;
 
 }
-
 .liens{
     text-align: center;
-    color: var(--bleu-fonce);
+    color: #2b3467;
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
+
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
-
 }
 .liens:hover{
-    background: var(--bleu-fonce);
-    color : var(--rose);
+    background: #2b3467;
+    color : #f1baa6;
     transition: 0,2s;
 }
