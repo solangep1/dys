@@ -1,6 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { Inscription } from "./inscription/inscription";
+import { Inscription } from "./inscription/inscription.component";
 
 const routes : Routes = [
 {path: 'inscription', component: Inscription}
