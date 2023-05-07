@@ -38,8 +38,6 @@ ul, li{
 }
 .liens{
   display: inline-block;
-  padding-top: 3px;
-  padding-bottom: 3px;
   text-align: center;
   color: #2b3467;
   text-decoration: none;
