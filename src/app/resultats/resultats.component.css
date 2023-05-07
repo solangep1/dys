@@ -1,0 +1,40 @@
+p{
+    color: var(--bleu-fonce);
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 15px;
+    position: relative;
+}
+h1{
+    color: var(--rose);
+    font-size: 22px;
+    background-color: var(--bleu-fonce);
+    border-radius: 50px;
+    border-top: 2em;
+    border-bottom: 2em;
+    display: flex;
+    display: block;
+    width: 40%;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.texte{
+    font-size: 22px;
+    color: var(--bleu-fonce);
+    background-color: var(--bleu-clair);
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+
+}
+.resultat{
+    padding-left: 30px;
+}
+.erreurs{
+
+}
+.graph{
+
+}
