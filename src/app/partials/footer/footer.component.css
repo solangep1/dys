@@ -1,18 +1,19 @@
 ul, li{
     display: inline-block;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin:0;
 
 }
 .liens{
+    display: inline-block;
     text-align: center;
     color: #2b3467;
     text-decoration: none;
     font-weight: bold;
     font-size: 20px;
-
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -21,23 +22,18 @@ ul, li{
     color : #f1baa6;
     transition: 0,2s;
 }
-
 .footer{
     background:#f1baa6;
     text-align: center;
     position: sticky;
 
 }
-
 .footer li {
     display:inline-block;
 }
 footer{
     position:relative;
     bottom: 0;
-}
-.bandeau:active{
-    color: green;
 }
 
 
