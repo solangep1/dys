@@ -1,0 +1,78 @@
+.bleu {
+    color: #2B3467;
+  }
+  
+.peau {
+    color: #F1BAA6;
+  }
+
+  .page-accueil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+  
+  .sous-titre {
+    text-align: center;
+    margin-bottom: 2rem;
+
+  }
+  
+  .boutons {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .bouton-inscription{ 
+    width: 10%;
+    display: inline-block;
+    text-underline-offset: 0%;
+    margin-right: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #F1BAA6;
+    background-color: #2B3467;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 57%;
+}
+
+.bouton-connexion {
+   display: inline-block;
+    margin-right: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: #2B3467;
+    background-color: #F1BAA6;
+    border: none;
+    display: inline-block;
+    text-underline-offset: 0%;
+    margin-right: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 65%;
+  }
+  
+  .bouton-inscription:hover,
+  .bouton-connexion:hover {
+    background-color: #BAD7E9;
+  }
+  
+  .recuperer-mdp {
+    text-align: center;
+    top : 80%;
+  }
