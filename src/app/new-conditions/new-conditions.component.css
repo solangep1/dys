@@ -1,0 +1,155 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background: #FFF;
+  }
+  
+  h4 {
+    color: #2B3467;
+    text-align: left;
+    font-family: Arial;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+  
+  h1 {
+    color: #2B3467;
+    text-align: center;
+    font-family: Arial;
+    font-weight: normal;
+    margin-bottom: 50px;
+  }
+
+.un {
+    width: auto;
+    height: auto;
+    background: rgb(241, 186, 166, 50%);
+    padding: 5px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding-bottom: 3px;
+  }
+  
+  .input_element {
+    display: block;
+    width: 220px;
+    height: 50px;
+    margin: 25px auto;
+    background: #F1BAA6;
+    opacity: 84%;
+    color: #2B3467;
+    border: 0px;
+    padding: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+  }
+  
+  .input_element:focus {
+    border: 2px solid #2B3467
+  }
+  
+  input[type="submit"] {
+    display: block;
+    background: #2B3467;
+    width: 260px;
+    padding: 12px;
+    cursor: pointer;
+    color: #fff;
+    border: 0px;
+    margin: auto;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    font-size: 17px;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="submit"]:hover {
+    background: #2B3467
+  }
+  
+  input::placeholder {
+    text-align: center;
+    color: #2B3467;
+  }
+  
+  /* or, for legacy browsers */
+  
+  ::-webkit-input-placeholder {
+    text-align: center;
+  }
+  
+  :-moz-placeholder {
+    /* Firefox 18- */
+    text-align: center;
+  
+  }
+  
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    text-align: center;
+  }
+  
+  :-ms-input-placeholder {
+    text-align: center;
+  }
+  
+  
+  .a {
+    text-align: center;
+    font-family: Arial;
+    color: #2B3467;
+    display: block;
+    margin: 15px auto;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 12px;
+    text-decoration: underline;
+  }
+  
+  
+  .logo {
+    padding: 0px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+  }
+  
+  
+  .header-buttons {
+    text-align: center;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 250px 250px;
+    grid-template-columns: 250px 250px;
+    justify-content: center;
+    height: 80px;
+  }
+
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px;
+    }
+  }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px;
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px;
+    }
+  }
+  
