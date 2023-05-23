@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @Component({
   selector: 'app-resultats',
@@ -7,13 +8,24 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./resultats.component.css']
 })
 export class ResultatsComponent{
+  searchText : any ;
+  exercices = [
+ 
+    
+  ]
+
+
+
+
+
+
   public options: any = {
     Chart: {
       type: 'area',
       height: 700
     },
     title: {
-      text: 'Graphique d évolution'
+      text: 'Graphique d&#39évolution'
     },
     credits: {
       enabled: false
