@@ -9,14 +9,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 })
 export class ResultatsComponent{
   searchText : any ;
-  exercices = [
- 
-    
-  ]
-
-
-
-
+  exercices = ['Dooble','Histoire d&#39orthographe']
 
 
   public options: any = {
@@ -26,6 +19,9 @@ export class ResultatsComponent{
     },
     title: {
       text: 'Graphique d&#39évolution',
+      style:{
+        color:'#2b3467'
+      }
     },
     credits: {
       enabled: false
@@ -36,12 +32,22 @@ export class ResultatsComponent{
       title: {
           enabled: false
       }
-  },
+    },
+    yAxis:{
+      title :{
+        text:'Nombre de bonnes réponses',
+        style:{
+          color:'#2b3467'
+        }
+      }
+        },
     series: [{
       name: 'Dooble',
+      color : '#f1baa6',
       data: [3, 6, 7, 10]
   }, {
     name: 'Histoire d&#39orthographe',
+    color:'#bad7e9',
     data: [11, 8, 12, 15]
 }]
   
