@@ -21,8 +21,22 @@ h1{
 }
 .texte1{
     font-size: 16px;
+.texte1{
+    font-size: 16px;
     color: var(--bleu-fonce);
     background-color: var(--bleu-clair);
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.texte2{
+    font-size: 16px;
+    color: var(--bleu-clair);
+    background-color: var(--bleu-fonce);
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
