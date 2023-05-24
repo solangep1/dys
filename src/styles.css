@@ -1,9 +1,9 @@
-:root{
+:root {
     --font-family: "Roboto", sans-serif;
-    --bleu-fonce : #2b3467;
-    --bleu-clair : #bad7e9;
-    --vert : #fcffe7;
-    --rose : #f1baa6;
+    --bleu-fonce: #2b3467;
+    --bleu-clair: #bad7e9;
+    --vert: #fcffe7;
+    --rose: #f1baa6;
 
 }
 
@@ -12,41 +12,64 @@
 /*util*/
 
 
-.d-flex{
-    display:flex;
+.d-flex {
+    display: flex;
 }
-.flex-row{
+
+.flex-row {
     flex-direction: row;
 }
-.flex-column{
+
+.flex-column {
     flex-direction: column;
 }
-.flex-justify-content-center{
+
+.flex-justify-content-center {
     justify-content: center;
 }
-.flex-justify-content-between{
+
+.flex-justify-content-between {
     justify-content: space-between;
 }
-.flex-align-items-center{
+
+.flex-align-items-center {
     align-items: center;
 }
-.flex-align-items-between{
+
+.flex-align-items-between {
     align-items: space-between;
 }
-.flex-fill{
+
+.flex-fill {
     flex: 1 1 auto;
 }
-.p-10{
-    padding : 10px;
+
+.p-10 {
+    padding: 10px;
 }
-.p-20{
-    padding : 20px;
+
+.p-20 {
+    padding: 20px;
 }
-.m-10{
-    margin : 10px;
+
+.m-10 {
+    margin: 10px;
 }
-.m-20{
-    margin : 20px;
+
+.m-20 {
+    margin: 20px;
 }
 
 
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

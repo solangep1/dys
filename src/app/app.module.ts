@@ -10,6 +10,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExerciceHDOComponent } from './exercice-hdo/exercice-hdo.component';
 import { ExerciceHdoListComponent } from './exercice-hdo-list/exercice-hdo-list.component';
+import { ExerciceListComponent } from './exercice-list/exercice-list.component';
+
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,12 +25,16 @@ import { ExerciceHdoListComponent } from './exercice-hdo-list/exercice-hdo-list.
     HeaderComponent,
     ResultatsComponent,
     ExerciceHDOComponent,
-    ExerciceHdoListComponent,
+    ExerciceListComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

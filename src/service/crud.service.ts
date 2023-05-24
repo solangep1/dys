@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-//@Injectable({
-//  providedIn: 'root'
-//})
+@Injectable({
+  providedIn: 'root'
+})
 
 export class CrudService {
   // Node/Express API
