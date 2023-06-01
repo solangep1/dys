@@ -15,5 +15,19 @@ export class CrudService {
   optsCat = [];
   optsGroupe = [];
 
+ 
+//get all result
+getCategories(){
+  //return this.httpClient.get(`${this.url}/categories`).pipe(tap((_)=> console.log('categories fetched')))
+
+  return this.optsCat.length 
+  ? of(this.optsCat) 
+  : this.httpClient
+      .get<any>(`${this.url}/result`)
+      .pipe(tap((data) => (this.optsCat = data)));
+
+}  
+
+  
 
 }

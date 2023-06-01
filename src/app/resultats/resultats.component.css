@@ -20,8 +20,7 @@ h1{
     padding-top: 10px;
 }
 .texte1{
-    font-size: 16px;
-.texte1{
+
     font-size: 16px;
     color: var(--bleu-fonce);
     background-color: var(--bleu-clair);
@@ -35,7 +34,7 @@ h1{
 }
 .texte2{
     font-size: 16px;
-    color: var(--bleu-clair);
+    color: white;
     background-color: var(--bleu-fonce);
     padding-left: 15px;
     padding-top: 10px;
@@ -45,10 +44,10 @@ h1{
     margin-left: auto;
     margin-right: auto;
 }
-.texte2{
+.texte3{
     font-size: 16px;
-    color: var(--bleu-clair);
-    background-color: var(--bleu-fonce);
+    color:white;
+    background-color: var(--rose);
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -59,8 +58,4 @@ h1{
 }
 .resultat{
     padding-left: 30px; 
-}
-.erreurs{
-    /*float: left;
-    width: 60em;*/
 }

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResultatsComponent } from './resultats.component';
+import { CommonModule } from '@angular/common';
+
 
 describe('ResultatsComponent', () => {
   let component: ResultatsComponent;

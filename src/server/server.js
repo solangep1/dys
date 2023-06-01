@@ -52,11 +52,19 @@ app.get('/user/result/:id', cors(), function (req, res) {
     );
 });
 
-
-
  // set port
  app.listen(3000, function () {
     console.log('Node app is running on port 3000');
 });
+
+
+ //get all results
+ app.get('/result',cors(), function (req, res) {
+    dbConn.query('SELECT * FROM result WHERE id>0  ;', function (error, results, fields) {
+        
+        if (error) throw error;
+        return res.send( results );
+    });
+  });
 
 module.exports = app;

@@ -7,12 +7,13 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { ResultatsComponent } from './resultats/resultats.component';
 import { ChartModule } from 'angular-highcharts';
 
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ResultatsComponent
+    
   ],
   imports: [
     BrowserModule, ChartModule

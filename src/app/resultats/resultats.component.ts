@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CrudService } from 'src/service/crud.service';
+import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+
+
 
 @Component({
   selector: 'app-resultats',
@@ -11,7 +18,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 export class ResultatsComponent{
   searchText : any ;
   exercices = ['Dooble','Histoire d&#39orthographe']
-
+  results: any[] = [];
+  categories:any[] =[];
 
   public options: any = {
     Chart: {
@@ -46,20 +54,29 @@ export class ResultatsComponent{
       name: 'Dooble',
       color : '#f1baa6',
       data: [3, 6, 7, 10]
-  }, {
-    name: 'Histoire d&#39orthographe',
-    color:'#bad7e9',
-    data: [11, 8, 12, 15]
-}]
+    },{
+      name: 'Histoire d&#39orthographe',
+      color:'#bad7e9',
+      data: [11, 8, 12, 15]
+    },{
+      name : 'Calcul malin',
+      color : '#2b3467',
+      data : [0, 9, 6, 5]
+    }]
   
   }
 
 
-  constructor() { }
+  constructor(/*private categoryService: CategoryService*/) { }
   ngOnInit() {
     Highcharts.chart('container', this.options)
+    this.getCategories();
   }
-
+  getCategories() {
+    /*this.categoryService.getCategories().subscribe(data => {
+      this.categories = data;
+    });*/
+  }
 
 
 }
