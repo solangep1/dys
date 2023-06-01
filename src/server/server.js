@@ -26,6 +26,10 @@ app.use((req, res, next) => {
 // connect to database
 dbConn.connect(); 
 
+/////////////////////
+/////   User    /////
+////////////////////
+
 //get user
 app.get('/user/:id', cors(), function (req, res) {
     var userId = req.params.id;
@@ -39,6 +43,10 @@ app.get('/user/:id', cors(), function (req, res) {
     );
 });
 
+///////////////////////
+/////   Result    /////
+//////////////////////
+
 //get result user
 app.get('/user/result/:id', cors(), function (req, res) {
     var userId = req.params.id;
@@ -51,7 +59,6 @@ app.get('/user/result/:id', cors(), function (req, res) {
         }
     );
 });
-
 
 
  // set port

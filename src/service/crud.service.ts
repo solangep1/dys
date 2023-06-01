@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-//@Injectable({
-//  providedIn: 'root'
-//})
+import { HttpClientModule } from '@angular/common/http';
 
+
+@Injectable({
+  providedIn: 'root'
+})
 export class CrudService {
   // Node/Express API
   private url = 'http://localhost:3000';
@@ -15,5 +17,24 @@ export class CrudService {
   optsCat = [];
   optsGroupe = [];
 
+  getUserResult(userId: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}/user/result/${userId}`).pipe(
+      tap((data) => {
+        this.optsCat = data;
+      }),
+      catchError(this.handleError)
+    );
+  }
 
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('Erreur côté client :', error.error.message);
+    } else {
+      console.error(
+        `Code d'erreur renvoyé par le backend : ${error.status}, ` +
+        `message d'erreur : ${error.error}`
+      );
+    }
+    return throwError('Une erreur est survenue. Service indisponible.');
+  }
 }
