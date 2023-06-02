@@ -30,7 +30,7 @@ dbConn.connect();
 /////   User    /////
 ////////////////////
 
-//get user
+//récupération des inforrmations de l'utisateur en fonction de son id
 app.get('/user/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
@@ -47,7 +47,7 @@ app.get('/user/:id', cors(), function (req, res) {
 /////   Result    /////
 //////////////////////
 
-//get result user
+//Récupération des résultats d'un utilisateur
 app.get('/user/result/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
@@ -59,6 +59,22 @@ app.get('/user/result/:id', cors(), function (req, res) {
         }
     );
 });
+
+//Récupération des résultats d'un utilisateur en fonction de l'exercice
+app.get('/user/result/:userId/:exerciceId', cors(), function (req, res) {
+    var userId = req.params.userId;
+    var exerciceId = req.params.exerciceId;
+    
+    dbConn.query(
+        "SELECT * FROM `result` WHERE user_id = ? AND result_exercice_id = ?",
+        [userId, exerciceId],
+        function (error, results, fields) {
+            if (error) throw error;
+            return res.send(results);
+        }
+    );
+});
+
 
 
  // set port

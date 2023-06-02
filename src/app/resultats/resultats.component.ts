@@ -13,13 +13,16 @@ export class ResultatsComponent implements OnInit {
   constructor(private crudService: CrudService) { }
 
   ngOnInit(): void {
-    this.crudService.getUserResult("1")
+    const userId = 1; // ID de l'utilisateur
+    const exerciceId = 2; // ID de l'exercice
+
+    this.crudService.getUserResultOfExercice(userId, exerciceId)
       .subscribe(
         results => {
           this.Results = results;
         },
         error => {
-          console.error(error); // Gérer l'erreur de manière appropriée
+          console.error(error); 
         }
       );
   }
