@@ -1,7 +1,7 @@
 <div class="resultat">
 
   <div id="searchbar">
-    <input type="text" name="search" [ngClass]="" placeholder="Cherchez un exercice">
+    <input type="text" name="search" placeholder="Cherchez un exercice">
     <tr></tr>
   </div>
 
@@ -10,7 +10,7 @@
 
   
   <p>Les résultats de vos performances ? C'est par là : </p>
-  <div *ngFor="let category of categories"></div><p>{{category.name}}</p>
+  <div *ngFor="let result of Results"><span>{{result.exercice_name}}</span></div>
   
   <div id="container"></div>
 
@@ -19,10 +19,10 @@
     <!--[ngStyle]="{'background-color' : exercices === 'Dooble' ? 'green', 'red'}"-->
     <h1 class="texte1"> Histoire d'orthographe - 30/04/2023 : 75% de réussite</h1>
     <h1 class="texte2"><B>Calcul malin</B> - 23/04/2023 : 13% de réussite</h1>
-    <h1 class="texte3"><B>Dooble</B> - 14/04/2023 : 23% de réussite</h1>
+    <h1 class="texte3"><span *ngFor="let result of Results">{{result.exercice_name}}</span> - <span *ngFor="let result of Results">{{result.result_date}}</span> : <span *ngFor="let result of Results">{{result.result_goodanswer}}</span> bonnes réponses</h1>
     <h1 class="texte1"><B>Histoire d'orthographe</B> - 09/04/2023 : 60% de réussite</h1>
     <h1 class="texte1"><B>Histoire d'orthographe</B> - 27/03/2023 : 64% de réussite</h1>
-    <h1 class="texte3"><B>Dooble</B> - 15/03/2023 : 50% de réussite</h1>
+    <h1 class="texte3"><span *ngFor="let result of Results">{{result.exercice_name}}</span> - <span *ngFor="let result of Results">{{result.result_date}}</span> : <span *ngFor="let result of Results">{{result.result_goodanswer}}</span> bonnes réponses</h1>
     <h1 class="texte2"><B>Calcul malin</B> - 23/02/2023 : 9% de réussite</h1>
     <h1 class="texte3"><B>Dooble</B> - 02/02/2023 : 39% de réussite</h1>
     <h1 class="texte1"><B>Histoire d'orthographe</B> - 17/01/2023 : 35% de réussite</h1>

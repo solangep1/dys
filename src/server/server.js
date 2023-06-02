@@ -26,7 +26,12 @@ app.use((req, res, next) => {
 // connect to database
 dbConn.connect(); 
 
-//get user
+
+/////////////////////
+/////   User    /////
+////////////////////
+
+//récupération des inforrmations de l'utisateur en fonction de son id
 app.get('/user/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
@@ -38,8 +43,11 @@ app.get('/user/:id', cors(), function (req, res) {
         }
     );
 });
+///////////////////////
+/////   Result    /////
+//////////////////////
 
-//get result user
+//Récupération des résultats d'un utilisateur
 app.get('/user/result/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
@@ -52,19 +60,27 @@ app.get('/user/result/:id', cors(), function (req, res) {
     );
 });
 
+//Récupération des résultats d'un utilisateur en fonction de l'exercice
+app.get('/user/result/:userId/:exerciceId', cors(), function (req, res) {
+    var userId = req.params.userId;
+    var exerciceId = req.params.exerciceId;
+    
+    dbConn.query(
+        "SELECT * FROM `result` WHERE user_id = ? AND result_id = ?",
+        [userId, exerciceId],
+        function (error, results, fields) {
+            if (error) throw error;
+            return res.send(results);
+        }
+    );
+});
+
+
+
+
  // set port
  app.listen(3000, function () {
     console.log('Node app is running on port 3000');
 });
-
-
- //get all results
- app.get('/result',cors(), function (req, res) {
-    dbConn.query('SELECT * FROM result WHERE id>0  ;', function (error, results, fields) {
-        
-        if (error) throw error;
-        return res.send( results );
-    });
-  });
 
 module.exports = app;

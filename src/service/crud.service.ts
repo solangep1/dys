@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-//@Injectable({
-//  providedIn: 'root'
-//})
+@Injectable({
+  providedIn: 'root'
+})
 
 export class CrudService {
   // Node/Express API
@@ -16,18 +16,35 @@ export class CrudService {
   optsGroupe = [];
 
  
-//get all result
-getCategories(){
-  //return this.httpClient.get(`${this.url}/categories`).pipe(tap((_)=> console.log('categories fetched')))
+//Récupération des résultats d'un utilisateur
+getUserResult(userId: string): Observable<any> {
+  return this.httpClient.get<any>(`${this.url}/user/result/${userId}`).pipe(
+    tap((data) => {
+      this.optsCat = data;
+    }),
+    catchError(this.handleError)
+  );
+}
 
-  return this.optsCat.length 
-  ? of(this.optsCat) 
-  : this.httpClient
-      .get<any>(`${this.url}/result`)
-      .pipe(tap((data) => (this.optsCat = data)));
+//Récupération des résultats d'un utilisateur en fonction de l'exercice
+getUserResultOfExercice(userId: number, exerciceId: number): Observable<any> {
+  return this.httpClient.get<any>(`${this.url}/user/result/${userId}/${exerciceId}`).pipe(
+    tap((data) => {
+      this.optsCat = data;
+    }),
+    catchError(this.handleError)
+  );
+}
 
-}  
-
-  
-
+private handleError(error: HttpErrorResponse) {
+  if (error.error instanceof ErrorEvent) {
+    console.error('Erreur côté client :', error.error.message);
+  } else {
+    console.error(
+      `Code d'erreur renvoyé par le backend : ${error.status}, ` +
+      `message d'erreur : ${error.error}`
+    );
+  }
+  return throwError('Une erreur est survenue. Service indisponible.');
+}
 }

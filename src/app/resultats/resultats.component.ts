@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { CrudService } from 'src/service/crud.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ResultModel } from 'src/models/result.models';
+import { CrudService } from 'src/service/crud.service';
 
 
 
@@ -15,13 +16,16 @@ import { Observable } from 'rxjs';
   templateUrl: './resultats.component.html',
   styleUrls: ['./resultats.component.css']
 })
-export class ResultatsComponent{
+
+
+export class ResultatsComponent implements OnInit{
   searchText : any ;
-  exercices = ['Dooble','Histoire d&#39orthographe']
-  results: any[] = [];
-  categories:any[] =[];
+  public Results: ResultModel[] = [];
+  public ScoreList?: Number[];
+
 
   public options: any = {
+
     Chart: {
       type: 'area',
       height: 700,
@@ -53,30 +57,40 @@ export class ResultatsComponent{
     series: [{
       name: 'Dooble',
       color : '#f1baa6',
-      data: [3, 6, 7, 10]
+      data: this.ScoreList
     },{
-      name: 'Histoire d&#39orthographe',
+      name:'Histoire d&#39orthographe',
       color:'#bad7e9',
       data: [11, 8, 12, 15]
     },{
-      name : 'Calcul malin',
+      name : 'Calcul malin ' ,
       color : '#2b3467',
-      data : [0, 9, 6, 5]
+      data : [3, 9, 6, 5]
     }]
-  
   }
 
 
-  constructor(/*private categoryService: CategoryService*/) { }
-  ngOnInit() {
+  constructor(private crudService : CrudService) { }
+  ngOnInit():void {
+    const userId = 2; // ID de l'utilisateur
+    const exerciceId = 5; // ID de l'exercice
+
+    this.crudService.getUserResult("2")
+      .subscribe(
+        results => {
+          this.Results = results;
+        },
+        error => {
+          console.error(error); // Gérer l'erreur de manière appropriée
+        }
+      );
+    this.initTableValue();
     Highcharts.chart('container', this.options)
-    this.getCategories();
-  }
-  getCategories() {
-    /*this.categoryService.getCategories().subscribe(data => {
-      this.categories = data;
-    });*/
   }
 
-
+  initTableValue():void{
+    this.Results.forEach((tmpResult:ResultModel) => {
+      this.ScoreList?.push(tmpResult.result_goodanswer)
+    });
+  }
 }

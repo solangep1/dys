@@ -6,6 +6,9 @@ import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { ResultatsComponent } from './resultats/resultats.component';
 import { ChartModule } from 'angular-highcharts';
+import { HttpClientModule } from '@angular/common/http';
+import { CrudService } from 'src/service/crud.service';
+
 
 
 @NgModule({
@@ -13,12 +16,13 @@ import { ChartModule } from 'angular-highcharts';
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    ResultatsComponent
     
   ],
   imports: [
-    BrowserModule, ChartModule
+    BrowserModule, ChartModule,HttpClientModule
   ],
-  providers: [],
+  providers: [CrudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
