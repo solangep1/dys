@@ -23,6 +23,16 @@ app.use((req, res, next) => {
     password: '',
     database: 'dys*bdd'
 });
+
+const corsOptions = {
+    origin: 'http://localhost:4200', // Autoriser les requêtes depuis ce domaine
+    optionsSuccessStatus: 200 // Répondre avec un statut 200 pour les requêtes preflight
+  };
+  
+  // Activer CORS pour toutes les routes
+  app.use(cors(corsOptions));
+  
+
 // connect to database
 dbConn.connect(); 
 
@@ -35,7 +45,7 @@ dbConn.connect();
 app.get('/user/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
-        "SELECT * FROM `user` WHERE user_id = ?",
+        "SELECT * FROM `users` WHERE user_id = ?",
         [userId],
         function (error, results, fields) {
             if (error) throw error;
@@ -43,6 +53,30 @@ app.get('/user/:id', cors(), function (req, res) {
         }
     );
 });
+
+//Vérification des identifiants de connexion. Si correcter alors on renvoie id utilisateur sinon 0
+app.get('/connexion/:user_email/:user_mdp', cors(), function (req, res) {
+    var user_email = req.params.user_email;
+    var user_mdp = req.params.user_mdp;
+
+    dbConn.query(
+        "SELECT user_id FROM `users` WHERE user_email = ? AND user_mdp = ?",
+        [user_email, user_mdp],
+        function (error, results, fields) {
+            if (error) throw error;
+            
+            if (results.length > 0) {
+                // L'utilisateur existe, renvoyer l'id de l'utilisateur
+                return res.send({ user_id: results[0].user_id });
+            } else {
+                // L'utilisateur n'existe pas, renvoyer 0
+                return res.send({ user_id: 0 });
+            }
+        }
+    );
+});
+
+
 ///////////////////////
 /////   Result    /////
 //////////////////////
@@ -51,7 +85,7 @@ app.get('/user/:id', cors(), function (req, res) {
 app.get('/user/result/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
-        "SELECT 'result_goodanswer' FROM `result` WHERE user_id = ?",
+        "SELECT * FROM `result` WHERE user_id = ?",
         [userId],
         function (error, results, fields) {
             if (error) throw error;
@@ -60,14 +94,35 @@ app.get('/user/result/:id', cors(), function (req, res) {
     );
 });
 
-//Récupération des résultats d'un utilisateur en fonction de l'exercice
-app.get('/user/result/:userId/:exerciceId', cors(), function (req, res) {
-    var userId = req.params.userId;
-    var exerciceId = req.params.exerciceId;
+// Ajout d'un nouveau resultat
+app.post('/add_result', function (req, res) {
+ 
+     //let result_id = req.body.result_id;
+    let user_id=req.body.user_id;
+    let result_date= req.body.result_date;
+    let exercice_id=req.body.exercice_id;
+    let result_score= req.body.result_score
+    let result_goodanswer = req.body.resutl_goodanswer;
+    let result_badanswer=req.body.result_badanswer;
+    console.log(req.body)
+ 
+    dbConn.query("INSERT INTO result SET user_id=?,result_date=?,exercice_id=?,result_score=?,result_goodanswer=?,result_badanswer=?", [user_id, result_date, exercice_id,result_score,result_goodanswer,result_badanswer,], function (error, results, fields) {
+        
+        if (error) throw error;
+        
+        return res.send({ error: false, data: results, message: 'New user has been created successfully.' });
+    });
     
+});
+
+///////////////////////
+/////   Exercice  /////
+//////////////////////
+
+//Récupération de la liste des exercices
+app.get('/exercice', cors(), function (req, res) {
     dbConn.query(
-        "SELECT * FROM `result` WHERE user_id = ? AND result_id = ?",
-        [userId, exerciceId],
+        "SELECT * FROM `exercice`",
         function (error, results, fields) {
             if (error) throw error;
             return res.send(results);
@@ -75,8 +130,20 @@ app.get('/user/result/:userId/:exerciceId', cors(), function (req, res) {
     );
 });
 
-
-
+///////////////////////
+/////   SpellingH /////
+//////////////////////
+app.get('/spellingh/:exercice_id', cors(), function (req, res) {
+    var exercice_id = req.params.exercice_id;
+    dbConn.query(
+        "SELECT * FROM `spellinghistory` WHERE exercice_id = ?",
+        [exercice_id],
+        function (error, results, fields) {
+            if (error) throw error;
+            return res.send(results);
+        }
+    );
+});
 
  // set port
  app.listen(3000, function () {
@@ -84,3 +151,4 @@ app.get('/user/result/:userId/:exerciceId', cors(), function (req, res) {
 });
 
 module.exports = app;
+
