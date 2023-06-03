@@ -5,10 +5,6 @@
     <tr></tr>
   </div>
 
-
-
-
-  
   <p>Les résultats de vos performances ? C'est par là : </p>
   
   <div id="container"></div>
@@ -18,10 +14,8 @@
     <!--[ngStyle]="{'background-color' : exercices === 'Dooble' ? 'green', 'red'}"-->
     <h1 class="texte1"> Histoire d'orthographe - 30/04/2023 : 75% de réussite</h1>
     <h1 class="texte2"><B>Calcul malin</B> - 23/04/2023 : 13% de réussite</h1>
-    <h1 class="texte3"><span *ngFor="let result of Results">{{result.exercice_name}}</span> - <span *ngFor="let result of Results">{{result.result_date}}</span> : <span *ngFor="let result of Results">{{result.result_goodanswer}}</span> bonnes réponses</h1>
     <h1 class="texte1"><B>Histoire d'orthographe</B> - 09/04/2023 : 60% de réussite</h1>
     <h1 class="texte1"><B>Histoire d'orthographe</B> - 27/03/2023 : 64% de réussite</h1>
-    <h1 class="texte3"><span *ngFor="let result of Results">{{result.exercice_name}}</span> - <span *ngFor="let result of Results">{{result.result_date}}</span> : <span *ngFor="let result of Results">{{result.result_goodanswer}}</span> bonnes réponses</h1>
     <h1 class="texte2"><B>Calcul malin</B> - 23/02/2023 : 9% de réussite</h1>
     <h1 class="texte3"><B>Dooble</B> - 02/02/2023 : 39% de réussite</h1>
     <h1 class="texte1"><B>Histoire d'orthographe</B> - 17/01/2023 : 35% de réussite</h1>
@@ -43,25 +37,25 @@
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Position Column -->
       <ng-container matColumnDef="title">
-          <th mat-header-cell matHeaderCellDef> Titre </th>
-          <td mat-cellmatCellDef="let element"> <button
+          <th mat-header-cell *matHeaderCellDef> Titre </th>
+          <td mat-cell *matCellDef="let element"> <button
                   (click)="hdoExercice(element.exercice_id)">{{element.exercice_title}} </button></td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="difficulty">
-          <th mat-header-cell matHeaderCellDef> Difficulté </th>
-          <td mat-cellmatCellDef="let element"> {{element.exercice_difficulty}} </td>
+          <th mat-header-cell *matHeaderCellDef> Difficulté </th>
+          <td mat-cell *matCellDef="let element"> {{element.exercice_difficulty}} </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="score">
-          <th mat-header-cell matHeaderCellDef> Score </th>
-          <td mat-cellmatCellDef= "let element"> {{element.score}} </td>
+          <th mat-header-cell *matHeaderCellDef> Score </th>
+          <td mat-cell *matCellDef="let element"> {{element.score}} </td>
       </ng-container>
 
-      <tr mat-header-row matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-rowmatRowDef="let row; columns: displayedColumns;"></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       <!-- Row shown when there is no matching data. -->
       <tr class="mat-row" *matNoDataRow>
