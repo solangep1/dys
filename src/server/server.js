@@ -34,7 +34,7 @@ dbConn.connect();
 app.get('/user/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
-        "SELECT * FROM `user` WHERE user_id = ?",
+        "SELECT * FROM `users` WHERE user_id = ?",
         [userId],
         function (error, results, fields) {
             if (error) throw error;
@@ -49,7 +49,7 @@ app.get('/connexion/:user_email/:user_mdp', cors(), function (req, res) {
     var user_mdp = req.params.user_mdp;
 
     dbConn.query(
-        "SELECT user_id FROM `user` WHERE user_email = ? AND user_mdp = ?",
+        "SELECT user_id FROM `users` WHERE user_email = ? AND user_mdp = ?",
         [user_email, user_mdp],
         function (error, results, fields) {
             if (error) throw error;
@@ -83,14 +83,14 @@ app.get('/user/result/:id', cors(), function (req, res) {
     );
 });
 
-//Récupération des résultats d'un utilisateur en fonction de l'exercice
-app.get('/user/result/:userId/:exerciceId', cors(), function (req, res) {
-    var userId = req.params.userId;
-    var exerciceId = req.params.exerciceId;
-    
+///////////////////////
+/////   Exercice  /////
+//////////////////////
+
+//Récupération de la liste des exercices
+app.get('/exercice', cors(), function (req, res) {
     dbConn.query(
-        "SELECT * FROM `result` WHERE user_id = ? AND result_exercice_id = ?",
-        [userId, exerciceId],
+        "SELECT * FROM `exercice`",
         function (error, results, fields) {
             if (error) throw error;
             return res.send(results);
@@ -98,7 +98,20 @@ app.get('/user/result/:userId/:exerciceId', cors(), function (req, res) {
     );
 });
 
-
+///////////////////////
+/////   SpellingH /////
+//////////////////////
+app.get('/spellingh/:exercice_id', cors(), function (req, res) {
+    var exercice_id = req.params.exercice_id;
+    dbConn.query(
+        "SELECT * FROM `spellinghistory` WHERE exercice_id = ?",
+        [exercice_id],
+        function (error, results, fields) {
+            if (error) throw error;
+            return res.send(results);
+        }
+    );
+});
 
  // set port
  app.listen(3000, function () {

@@ -57,15 +57,34 @@ VerificationConnexion(user_email: string, user_mdp:string ): Observable<any> {
     );
   }
 
-//Récupération des résultats d'un utilisateur en fonction de l'exercice
-getUserResultOfExercice(userId: number, exerciceId: number): Observable<any> {
-  return this.httpClient.get<any>(`${this.url}/user/result/${userId}/${exerciceId}`).pipe(
-    tap((data) => {
-      this.optsCat = data;
-    }),
-    catchError(this.handleError)
-  );
-}
+///////////////////////
+/////   Exercice  /////
+//////////////////////
+
+  //Récupération de la liste des exercices
+  getExerciceList(): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}/exercice`).pipe(
+      tap((data) => {
+        this.optsCat = data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+  
+///////////////////////
+/////   SpellingH /////
+//////////////////////
+
+  //Récupération d'un exercice de type spelling history
+  getSpellingHistory(sh_id:Number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}/spellingh/${sh_id}`).pipe(
+      tap((data) => {
+        this.optsCat = data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+  
 
 ///////////////////////
 /////   Autre    /////

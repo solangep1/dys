@@ -22,17 +22,6 @@ export class ResultatsComponent implements OnInit {
     const user_email = "benjamin.jourdain94@gmail.com";
     const user_mdp = "123"
 
-    this.crudService.getUserResultOfExercice(userId, exerciceId)
-      .subscribe(
-        results => {
-          this.Results = results;
-        },
-        error => {
-          console.error(error); 
-        }
-      );
-
-
       this.crudService.getUser(userId).subscribe(
         (data) => {
           // Traitement des données retournées avec succès
@@ -52,6 +41,28 @@ export class ResultatsComponent implements OnInit {
         (error) => {
           // Gérez les erreurs
           console.error('Une erreur s\'est produite : ', error);
+        }
+      );
+
+      this.crudService.getExerciceList().subscribe(
+        (data: any) => {
+          // Traitement des données retournées
+          console.log(data); // Affiche les données retournées par la requête HTTP
+        },
+        (error: any) => {
+          // Gestion des erreurs
+          console.error(error); // Affiche l'erreur en cas de problème lors de la requête HTTP
+        }
+      );
+
+      this.crudService.getSpellingHistory(1).subscribe(
+        (data: any) => {
+          // Traitement des données retournées
+          console.log(data); // Affiche les données retournées par la requête HTTP
+        },
+        (error: any) => {
+          // Gestion des erreurs
+          console.error(error); // Affiche l'erreur en cas de problème lors de la requête HTTP
         }
       );
 
