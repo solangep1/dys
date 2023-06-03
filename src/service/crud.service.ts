@@ -17,6 +17,24 @@ export class CrudService {
   optsCat = [];
   optsGroupe = [];
 
+/////////////////////
+/////   User    /////
+////////////////////
+  //Récupération des données d'un utilisateur
+  getUser(userId: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.url}/user/${userId}`).pipe(
+      tap((data) => {
+        this.optsCat = data;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+
+///////////////////////
+/////   Result    /////
+//////////////////////
+
   //Récupération des résultats d'un utilisateur
   getUserResult(userId: number): Observable<any> {
     return this.httpClient.get<any>(`${this.url}/user/result/${userId}`).pipe(
@@ -37,6 +55,10 @@ getUserResultOfExercice(userId: number, exerciceId: number): Observable<any> {
   );
 }
 
+///////////////////////
+/////   Autre    /////
+//////////////////////
+//Message d'erreur
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.error('Erreur côté client :', error.error.message);
