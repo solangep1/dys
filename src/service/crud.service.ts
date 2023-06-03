@@ -59,7 +59,7 @@ VerificationConnexion(user_email: string, user_mdp:string ): Observable<any> {
   }
 
  //Ajout d'un résultat en base
- AddRef(result: ResultModel): Observable<any> {
+ AddResultat(result: ResultModel): Observable<any> {
   console.log(result)
   let API_URL = `${this.url}/add_result`;
   return this.httpClient.post(API_URL, result)
