@@ -66,7 +66,21 @@ export class ResultatsComponent implements OnInit {
         }
       );
 
-
+      const newResult: ResultModel = {
+        result_id: 1,
+        user_id: 123,
+        result_date: new Date(),
+        exercice_id: 456,
+        result_score: 85,
+        resutl_goodanswer: 20,
+        result_badanswer: 5
+      };
+      
+      this.crudService.AddRef(newResult).subscribe(response => {
+        console.log(response); // Traitement de la réponse
+      }, error => {
+        console.error(error); // Gestion des erreurs
+      });
 
   }
 }

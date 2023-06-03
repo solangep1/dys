@@ -3,6 +3,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { ResultModel } from 'src/models/result.models';
 
 
 @Injectable({
@@ -56,6 +57,16 @@ VerificationConnexion(user_email: string, user_mdp:string ): Observable<any> {
       catchError(this.handleError)
     );
   }
+
+ //Ajout d'un résultat en base
+ AddRef(result: ResultModel): Observable<any> {
+  console.log(result)
+  let API_URL = `${this.url}/add_result`;
+  return this.httpClient.post(API_URL, result)
+    .pipe(
+      catchError(this.handleError)
+    )
+}
 
 ///////////////////////
 /////   Exercice  /////

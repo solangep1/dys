@@ -23,8 +23,19 @@ app.use((req, res, next) => {
     password: '',
     database: 'dys*bdd'
 });
+
+const corsOptions = {
+    origin: 'http://localhost:4200', // Autoriser les requêtes depuis ce domaine
+    optionsSuccessStatus: 200 // Répondre avec un statut 200 pour les requêtes preflight
+  };
+  
+  // Activer CORS pour toutes les routes
+  app.use(cors(corsOptions));
+  
+
 // connect to database
 dbConn.connect(); 
+
 
 /////////////////////
 /////   User    /////
@@ -81,6 +92,27 @@ app.get('/user/result/:id', cors(), function (req, res) {
             return res.send(results);
         }
     );
+});
+
+// Ajout d'un nouveau resultat
+app.post('/add_result', function (req, res) {
+ 
+     //let result_id = req.body.result_id;
+    let user_id=req.body.user_id;
+    let result_date= req.body.result_date;
+    let exercice_id=req.body.exercice_id;
+    let result_score= req.body.result_score
+    let result_goodanswer = req.body.resutl_goodanswer;
+    let result_badanswer=req.body.result_badanswer;
+    console.log(req.body)
+ 
+    dbConn.query("INSERT INTO result SET user_id=?,result_date=?,exercice_id=?,result_score=?,result_goodanswer=?,result_badanswer=?", [user_id, result_date, exercice_id,result_score,result_goodanswer,result_badanswer,], function (error, results, fields) {
+        
+        if (error) throw error;
+        
+        return res.send({ error: false, data: results, message: 'New user has been created successfully.' });
+    });
+    
 });
 
 ///////////////////////
