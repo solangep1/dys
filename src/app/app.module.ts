@@ -15,11 +15,10 @@ import { CrudService } from 'src/service/crud.service';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
-    ResultatsComponent    
+    FooterComponent
   ],
   imports: [
-    BrowserModule, ChartModule,HttpClientModule
+    BrowserModule, ChartModule,HttpClientModule, ResultatsComponent
   ],
   providers: [CrudService],
   bootstrap: [AppComponent]

@@ -82,10 +82,10 @@ export class ResultatsComponent implements OnInit{
     }]
   }
 
+  constructor(private crudService: CrudService, private readonly router: Router, private route: ActivatedRoute) {}
 
-  constructor(private crudService: CrudService, private readonly router: Router, private route: ActivatedRoute) { }
   ngOnInit(): void {
-    this.crudService.getExerciceList()
+    this.crudService.getExerciceList("SpellingHistory")
       .subscribe(
         exercices => {
           this.exerciceList = exercices;
@@ -111,7 +111,5 @@ export class ResultatsComponent implements OnInit{
   hdoExercice(exercice_id: number) {
     this.router.navigateByUrl("exerciceHDO/:" + exercice_id);
   }
-
-  
   
 }
