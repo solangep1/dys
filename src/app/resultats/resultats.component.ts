@@ -76,7 +76,7 @@ export class ResultatsComponent implements OnInit {
         result_badanswer: 5
       };
       
-      this.crudService.AddRef(newResult).subscribe(response => {
+      this.crudService.AddResultat(newResult).subscribe(response => {
         console.log(response); // Traitement de la réponse
       }, error => {
         console.error(error); // Gestion des erreurs
