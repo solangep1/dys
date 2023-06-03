@@ -48,3 +48,4 @@ private handleError(error: HttpErrorResponse) {
   return throwError('Une erreur est survenue. Service indisponible.');
 }
 }
+

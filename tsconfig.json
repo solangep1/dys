@@ -29,6 +29,7 @@
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "experimentalDecorators":true
   }
 }
