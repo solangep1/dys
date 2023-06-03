@@ -6,11 +6,12 @@ import { ExerciceHDOComponent } from './exercice-hdo/exercice-hdo.component';
 import { ExerciceHdoListComponent } from './exercice-hdo-list/exercice-hdo-list.component';
 
 
+
 const routes: Routes = [
   { path: "header", component: HeaderComponent },
   { path: 'exerciceList', component: ExerciceListComponent },
   { path: 'exerciceHdoList', component: ExerciceHdoListComponent },
-  { path: 'exerciceHDO', component: ExerciceHDOComponent },
+  { path: 'exerciceHDO/:id', component: ExerciceHDOComponent },
 ];
 
 @NgModule({
