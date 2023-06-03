@@ -1,14 +1,11 @@
 <main>
-    <h3>Complétez ce texte à trous avec les mots suivants :</h3>
-    <div>
-        <h2>SHModel</h2>
-        <p>sh_id: {{ spellingHistory.sh_id }}</p>
-        <p>exercice_id: {{ spellingHistory.exercice_id }}</p>
-        <p>exercice_title: {{ spellingHistory.exercice_title }}</p>
-        <p>exercice_difficulty: {{ spellingHistory.exercice_difficulty }}</p>
-        <p>sh_text: {{ spellingHistory.sh_text }}</p>
-        <p>sh_result: {{ spellingHistory.sh_result }}</p>
-    </div>
+    <h1>Complétez ce texte à trous avec les mots suivants :</h1>
+    <h3>{{ spellingHistory.exercice_title }}</h3>
+
+    <p>{{ spellingHistory.sh_text }}</p>
+
+    <h3>Mots a remplacer</h3>
+    <p>{{ spellingHistory.sh_result }}</p>
 
     <input type="button" value="Règles du jeu">
     <input type="button" value="Règles d'orthographe">
