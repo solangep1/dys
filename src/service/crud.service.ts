@@ -17,7 +17,7 @@ export class CrudService {
 
  
 //Récupération des résultats d'un utilisateur
-getUserResult(userId: string): Observable<any> {
+getUserResult(userId: number): Observable<any> {
   return this.httpClient.get<any>(`${this.url}/user/result/${userId}`).pipe(
     tap((data) => {
       this.optsCat = data;

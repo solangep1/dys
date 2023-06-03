@@ -51,7 +51,7 @@ app.get('/user/:id', cors(), function (req, res) {
 app.get('/user/result/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
-        "SELECT * FROM `result` WHERE user_id = ?",
+        "SELECT 'result_goodanswer' FROM `result` WHERE user_id = ?",
         [userId],
         function (error, results, fields) {
             if (error) throw error;

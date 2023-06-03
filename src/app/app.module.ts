@@ -16,8 +16,7 @@ import { CrudService } from 'src/service/crud.service';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ResultatsComponent
-    
+    ResultatsComponent    
   ],
   imports: [
     BrowserModule, ChartModule,HttpClientModule

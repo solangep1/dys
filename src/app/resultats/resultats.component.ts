@@ -22,6 +22,7 @@ export class ResultatsComponent implements OnInit{
   searchText : any ;
   public Results: ResultModel[] = [];
   public ScoreList?: Number[];
+  myArray = [{name:"a"}, {name:""}, {name:"b"}, {name:"c"}];
 
 
   public options: any = {
@@ -57,7 +58,7 @@ export class ResultatsComponent implements OnInit{
     series: [{
       name: 'Dooble',
       color : '#f1baa6',
-      data: this.ScoreList
+      data: [7, 7, 8, 13]
     },{
       name:'Histoire d&#39orthographe',
       color:'#bad7e9',
@@ -73,9 +74,10 @@ export class ResultatsComponent implements OnInit{
   constructor(private crudService : CrudService) { }
   ngOnInit():void {
     const userId = 2; // ID de l'utilisateur
-    const exerciceId = 5; // ID de l'exercice
-
-    this.crudService.getUserResult("2")
+    const exerciceId = 3; // ID de l'exercice
+    
+    
+    this.crudService.getUserResultOfExercice(userId,exerciceId)
       .subscribe(
         results => {
           this.Results = results;
@@ -84,13 +86,19 @@ export class ResultatsComponent implements OnInit{
           console.error(error); // Gérer l'erreur de manière appropriée
         }
       );
+
+
     this.initTableValue();
     Highcharts.chart('container', this.options)
+
   }
+
+
 
   initTableValue():void{
     this.Results.forEach((tmpResult:ResultModel) => {
       this.ScoreList?.push(tmpResult.result_goodanswer)
     });
   }
+  
 }
