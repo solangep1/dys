@@ -19,6 +19,8 @@ export class ResultatsComponent implements OnInit {
   ngOnInit(): void {
     const userId = 1; // ID de l'utilisateur
     const exerciceId = 2; // ID de l'exercice
+    const user_email = "benjamin.jourdain94@gmail.com";
+    const user_mdp = "123"
 
     this.crudService.getUserResultOfExercice(userId, exerciceId)
       .subscribe(
@@ -39,6 +41,17 @@ export class ResultatsComponent implements OnInit {
         (error) => {
           // Gestion des erreurs
           console.error(error);
+        }
+      );
+
+      this.crudService.VerificationConnexion(user_email, user_mdp).subscribe(
+        (data) => {
+          // Traitez les données renvoyées dans la réponse
+          console.log(data); // Affichez les données dans la console ou effectuez d'autres opérations nécessaires
+        },
+        (error) => {
+          // Gérez les erreurs
+          console.error('Une erreur s\'est produite : ', error);
         }
       );
 

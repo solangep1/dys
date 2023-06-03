@@ -30,6 +30,18 @@ export class CrudService {
     );
   }
 
+//Vérification des identifiants de connexion. Si correcter alors on renvoie id utilisateur sinon 0
+VerificationConnexion(user_email: string, user_mdp:string ): Observable<any> {
+      return this.httpClient.get<any>(`${this.url}/connexion/${user_email}/${user_mdp}`).pipe(
+        tap((data) => {
+          this.optsCat = data;
+        }),
+        catchError(this.handleError)
+      );
+    }
+  
+
+
 
 ///////////////////////
 /////   Result    /////

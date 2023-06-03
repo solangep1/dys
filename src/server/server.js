@@ -43,6 +43,29 @@ app.get('/user/:id', cors(), function (req, res) {
     );
 });
 
+//Vérification des identifiants de connexion. Si correcter alors on renvoie id utilisateur sinon 0
+app.get('/connexion/:user_email/:user_mdp', cors(), function (req, res) {
+    var user_email = req.params.user_email;
+    var user_mdp = req.params.user_mdp;
+
+    dbConn.query(
+        "SELECT user_id FROM `user` WHERE user_email = ? AND user_mdp = ?",
+        [user_email, user_mdp],
+        function (error, results, fields) {
+            if (error) throw error;
+            
+            if (results.length > 0) {
+                // L'utilisateur existe, renvoyer l'id de l'utilisateur
+                return res.send({ user_id: results[0].user_id });
+            } else {
+                // L'utilisateur n'existe pas, renvoyer 0
+                return res.send({ user_id: 0 });
+            }
+        }
+    );
+});
+
+
 ///////////////////////
 /////   Result    /////
 //////////////////////
