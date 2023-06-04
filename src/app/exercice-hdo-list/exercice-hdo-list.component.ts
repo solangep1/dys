@@ -26,7 +26,12 @@ export class ExerciceHdoListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    //Récupération des exercices histoire d'orthographe
+    this.initExerciceList();
+    this.initResultList();
+
+  }
+
+  initExerciceList() {
     this.crudService.getExerciceList("SpellingHistory")
       .subscribe(
         exercices => {
@@ -36,8 +41,9 @@ export class ExerciceHdoListComponent implements OnInit {
         error => {
           console.error(error);
         });
+  }
 
-    //Récupération des derniers resultats par exercice
+  initResultList() {
     this.crudService.getListLastResultOfUser(1, 'SpellingHistory')
       .subscribe(
         (data) => {

@@ -195,6 +195,7 @@ app.get('/exercice/:exercice_type', cors(), function (req, res) {
 ///////////////////////
 /////   SpellingH /////
 //////////////////////
+// Récupération d'un exercice spelling history en fonction de son id
 app.get('/spellingh/:exercice_id', cors(), function (req, res) {
     var exercice_id = req.params.exercice_id;
     dbConn.query(
@@ -207,7 +208,7 @@ app.get('/spellingh/:exercice_id', cors(), function (req, res) {
     );
 });
 
-// set port
+// définir le branch
 app.listen(3000, function () {
     console.log('Node app is running on port 3000');
 });
