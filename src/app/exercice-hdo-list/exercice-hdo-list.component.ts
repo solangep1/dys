@@ -7,6 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
+
 @Component({
   selector: 'app-exercice-hdo-list',
   templateUrl: './exercice-hdo-list.component.html',
@@ -21,7 +22,9 @@ export class ExerciceHdoListComponent implements OnInit {
   dataSource = new MatTableDataSource(this.exerciceList);
   displayedColumns: string[] = ['title', 'difficulty', 'score'];
 
-  constructor(private crudService: CrudService, private readonly router: Router) { }
+  constructor(private crudService: CrudService, private readonly router: Router) {
+
+  }
 
   ngOnInit(): void {
     this.crudService.getUserResult(2)

@@ -37,13 +37,29 @@ p {
     padding: 2%;
 }
 
-input[type='button'] {
-    background-color: #2B3467;
-    color: #F1BAA6;
-    float: right;
-    margin-right: 1%;
-    padding: 1%;
-    border-radius: 20px;
-    border: none;
-    border-color: #2B3467;
+
+th{
+    color: var(--bleu-clair);
+    font-size: 22px;
+    background-color: var(--rose);
+    border-radius: 10px;
+    border-top: 2em;
+    border-bottom: 2em;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+td{
+    color: var(--bleu-fonce);
+    font-size: 22px;
+    border-radius: 10px;
+    border-top: 2em;
+    border-bottom: 2em;
+    padding-left: 15px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+input{
+    color: var(--bleu-fonce);
+
 }
