@@ -22,19 +22,16 @@ ul, li{
     color : #f1baa6;
     transition: 0,2s;
 }
-.footer{
-    background:#f1baa6;
-    text-align: center;
-    position: sticky;
 
-}
 .footer li {
     display:inline-block;
 }
 footer{
-    position:absolute;
+    position:relative;
     bottom: 0;
-    width : 100%
+    width : 100%;
+    background:#f1baa6;
+    text-align: center;
 }
 
 

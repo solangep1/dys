@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ExerciceHdoListComponent } from './exercice-hdo-list/exercice-hdo-list.component';
-import { ExerciceListComponent } from './exercice-list/exercice-list.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +23,6 @@ import { CrudService } from 'src/service/crud.service';
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    ExerciceListComponent,
   ],
   imports: [
     BrowserModule,
