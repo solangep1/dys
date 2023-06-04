@@ -41,6 +41,9 @@ export class CrudService {
     );
   }
 
+
+
+
   ///////////////////////
   /////   Result    /////
   //////////////////////
@@ -101,4 +104,3 @@ export class CrudService {
     return throwError('Une erreur est survenue. Service indisponible.');
   }
 }
-

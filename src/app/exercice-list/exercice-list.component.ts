@@ -2,13 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-exercice-list',
+  templateUrl: './exercice-list.component.html',
+  styleUrls: ['./exercice-list.component.css']
 })
-
-
-export class HeaderComponent {
+export class ExerciceListComponent {
   constructor(
     private readonly router: Router,
   ) { }
