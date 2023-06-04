@@ -18,8 +18,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 export class ExerciceHdoListComponent implements OnInit {
 
   exerciceList: ExerciceModel[] = [];
-  dataSource = new MatTableDataSource(this.exerciceList);
+  dataSource = new MatTableDataSource<any>;
   displayedColumns: string[] = ['title', 'difficulty', 'score'];
+  resultList: string[] = [];
+  listExerciceWithScore: string[][] = [];
 
   constructor(private crudService: CrudService, private readonly router: Router) { }
 
@@ -28,13 +30,30 @@ export class ExerciceHdoListComponent implements OnInit {
       .subscribe(
         exercices => {
           this.exerciceList = exercices;
-          this.dataSource = new MatTableDataSource(this.exerciceList);
-          console.log(exercices);
         },
         error => {
           console.error(error);
         });
 
+    this.crudService.getListLastResultOfUser(1, 'SpellingHistory')
+      .subscribe(
+        (data) => {
+          this.resultList = data;
+          this.concatenList(); // Ajouter les parenthèses ici
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+  }
+
+
+  concatenList() {
+    for (let i = 0; i < this.exerciceList.length; i++) {
+      const ligne = [this.exerciceList[i].exercice_title, this.exerciceList[i].exercice_difficulty.toString(), this.resultList[i]];
+      this.listExerciceWithScore.push(ligne);
+    }
+    console.log(this.listExerciceWithScore); // Vérifier le contenu dans la console
   }
 
   applyFilter(event: Event) {

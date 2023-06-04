@@ -2,12 +2,20 @@
     <h1>Complétez ce texte à trous avec les mots suivants :</h1>
     <h3>{{ spellingHistory.exercice_title }}</h3>
 
-    <p>{{ spellingHistory.sh_text }}</p>
+    <p [innerHTML]="replaceText(spellingHistory.sh_text)"></p>
 
     <h3>Mots a remplacer</h3>
     <p>{{ spellingHistory.sh_result }}</p>
 
-    <input type="button" value="Règles du jeu">
-    <input type="button" value="Règles d'orthographe">
-    <input type="button" value="Valider">
+    <button>Règles du jeu</button>
+    <button>Règles d'orthographe</button>
+
+    <div *ngIf="showScore">
+        <h3>Résultat :</h3>
+        <p>{{ spellingHistoryResult.result_score }}%</p>
+    </div>
+
+    <div *ngIf="!showScore">
+        <button (click)="validateInputs()">Valider</button>
+    </div>
 </main>

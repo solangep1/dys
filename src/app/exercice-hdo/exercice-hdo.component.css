@@ -37,7 +37,7 @@ p {
     padding: 2%;
 }
 
-input[type='button'] {
+button {
     background-color: #2B3467;
     color: #F1BAA6;
     float: right;

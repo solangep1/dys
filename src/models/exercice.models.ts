@@ -3,4 +3,5 @@ export interface ExerciceModel {
     exercice_title: string;
     exercice_type: string;
     exercice_difficulty: number;
+    exercice_result: number;
 }

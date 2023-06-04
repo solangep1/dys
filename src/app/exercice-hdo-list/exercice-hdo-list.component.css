@@ -36,14 +36,3 @@ p {
     border-radius: 10px;
     padding: 2%;
 }
-
-input[type='button'] {
-    background-color: #2B3467;
-    color: #F1BAA6;
-    float: right;
-    margin-right: 1%;
-    padding: 1%;
-    border-radius: 20px;
-    border: none;
-    border-color: #2B3467;
-}
