@@ -6,12 +6,13 @@ import { Router } from '@angular/router';
   templateUrl: './exercice-list.component.html',
   styleUrls: ['./exercice-list.component.css']
 })
+
 export class ExerciceListComponent {
   constructor(
     private readonly router: Router,
   ) { }
 
-  hdoList() {
+  navigateToHdoList() {
     this.router.navigateByUrl("exerciceHdoList")
   }
 }

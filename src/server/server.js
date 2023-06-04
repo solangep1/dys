@@ -142,8 +142,8 @@ app.get('/result/:id/:exercice_type', cors(), function (req, res) {
     dbConn.query(
         "SELECT \
             CASE \
-                WHEN r.result_score IS NOT NULL r.result_score \
-                ELSE '' \
+                WHEN r.result_score IS NOT NULL THEN CONCAT(r.result_score) \
+                ELSE 0 \
             END AS status \
         FROM \
             exercice e \

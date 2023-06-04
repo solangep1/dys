@@ -1,21 +1,29 @@
 <main>
     <h1>Complétez ce texte à trous avec les mots suivants :</h1>
     <h3>{{ spellingHistory.exercice_title }}</h3>
+    <!-- Affiche le titre de l'exercice -->
 
     <p [innerHTML]="replaceText(spellingHistory.sh_text)"></p>
+    <!-- Affiche le texte de l'exercice avec des champs de saisie à la place des mots à remplacer -->
 
-    <h3>Mots a remplacer</h3>
+    <h3>Mots à remplacer</h3>
     <p>{{ spellingHistory.sh_result }}</p>
+    <!-- Affiche les mots qui doivent être remplacés dans le texte -->
 
     <button>Règles du jeu</button>
+    <!-- Bouton pour afficher les règles du jeu -->
+
     <button>Règles d'orthographe</button>
+    <!-- Bouton pour afficher les règles d'orthographe -->
 
     <div *ngIf="showScore">
         <h3>Résultat :</h3>
         <p>{{ spellingHistoryResult.result_score }}%</p>
     </div>
+    <!-- Affiche le résultat de l'exercice si le score est disponible -->
 
     <div *ngIf="!showScore">
         <button (click)="validateInputs()">Valider</button>
     </div>
+    <!-- Affiche un bouton "Valider" si le score n'est pas encore disponible -->
 </main>

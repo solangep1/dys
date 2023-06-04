@@ -20,26 +20,29 @@ export class ExerciceHdoListComponent implements OnInit {
   exerciceList: ExerciceModel[] = [];
   dataSource = new MatTableDataSource<any>;
   displayedColumns: string[] = ['title', 'difficulty', 'score'];
-  resultList: string[] = [];
-  listExerciceWithScore: string[][] = [];
+  resultList: any[] = [];
 
   constructor(private crudService: CrudService, private readonly router: Router) { }
 
   ngOnInit(): void {
+
+    //Récupération des exercices histoire d'orthographe
     this.crudService.getExerciceList("SpellingHistory")
       .subscribe(
         exercices => {
           this.exerciceList = exercices;
+          this.dataSource = new MatTableDataSource(this.exerciceList);
         },
         error => {
           console.error(error);
         });
 
+    //Récupération des derniers resultats par exercice
     this.crudService.getListLastResultOfUser(1, 'SpellingHistory')
       .subscribe(
         (data) => {
           this.resultList = data;
-          this.concatenList(); // Ajouter les parenthèses ici
+          console.log(this.resultList)
         },
         (error) => {
           console.error(error);
@@ -47,21 +50,12 @@ export class ExerciceHdoListComponent implements OnInit {
       );
   }
 
-
-  concatenList() {
-    for (let i = 0; i < this.exerciceList.length; i++) {
-      const ligne = [this.exerciceList[i].exercice_title, this.exerciceList[i].exercice_difficulty.toString(), this.resultList[i]];
-      this.listExerciceWithScore.push(ligne);
-    }
-    console.log(this.listExerciceWithScore); // Vérifier le contenu dans la console
-  }
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  hdoExercice(exercice_id: number) {
+  navigateToExercice(exercice_id: number) {
     this.router.navigateByUrl("exerciceHDO/:" + exercice_id);
   }
 
