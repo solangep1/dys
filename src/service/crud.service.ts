@@ -4,6 +4,7 @@ import { Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultModel } from 'src/models/result.models';
+import { UserModel } from 'src/models/user.models';
 
 
 @Injectable({
@@ -40,8 +41,17 @@ VerificationConnexion(user_email: string, user_mdp:string ): Observable<any> {
         catchError(this.handleError)
       );
     }
-  
 
+  //Création d'un nouvelle utilisateur
+    Inscription(user: UserModel): Observable<any> {
+      console.log(user)
+      let API_URL = `${this.url}/user/create`;
+      return this.httpClient.post(API_URL, user)
+        .pipe(
+          catchError(this.handleError)
+        )
+    }
+    
 
 
 ///////////////////////
@@ -68,6 +78,16 @@ VerificationConnexion(user_email: string, user_mdp:string ): Observable<any> {
     )
 }
 
+//Récupération de la liste des exercices avec le dernier résultat obtenus d'un utilisateur pour chaque exercice
+getListLastResultOfUser(userId: number,exercice_type: string ): Observable<any> {
+  return this.httpClient.get<any>(`${this.url}/result/${userId}/${exercice_type}`).pipe(
+    tap((data) => {
+      this.optsCat = data;
+    }),
+    catchError(this.handleError)
+  );
+}
+
 ///////////////////////
 /////   Exercice  /////
 //////////////////////
@@ -87,15 +107,15 @@ VerificationConnexion(user_email: string, user_mdp:string ): Observable<any> {
 //////////////////////
 
   //Récupération d'un exercice de type spelling history
-  getSpellingHistory(sh_id:Number): Observable<any> {
+  getSpellingHistory(sh_id: number): Observable<any> {
     return this.httpClient.get<any>(`${this.url}/spellingh/${sh_id}`).pipe(
+      map((data) => data[0]), // Extraction du premier élément du tableau de données
       tap((data) => {
         this.optsCat = data;
       }),
       catchError(this.handleError)
     );
   }
-  
 
 ///////////////////////
 /////   Autre    /////

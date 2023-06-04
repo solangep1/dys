@@ -1,19 +1,29 @@
 <h1>Les résultats de vos performances ? C'est pas là :</h1>
 
-  <input type="hidden" #selection>
+<input type="hidden" #selection>
 
-  <div class="card-container">
-    <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
-      <svg class="material-icons" xmlns="#" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Histoire d'orthographe</span>
-    </button>
+<div class="card-container">
+  <button class="card card-small" (click)="selection.value = 'component'" tabindex="0">
+    <svg class="material-icons" xmlns="#" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+    </svg>
+    <span>Histoire d'orthographe</span>
+  </button>
 
-    <button class="card card-small" (click)="selection.value = 'material'" tabindex="0">
-      <svg class="material-icons" xmlns="#" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      <span>Dobble</span>
-    </button>
+  <button class="card card-small" (click)="selection.value = 'material'" tabindex="0">
+    <svg class="material-icons" xmlns="#" width="24" height="24" viewBox="0 0 24 24">
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+    </svg>
+    <span>Dobble</span>
+  </button>
 
-    <li *ngFor="let result of Results">{{ result.result_date }}</li>
-
-    {{User?.user_email}}
+  <div>
+    <h2>SHModel</h2>
+    <p>sh_id: {{ spellingHistory.sh_id }}</p>
+    <p>exercice_id: {{ spellingHistory.exercice_id }}</p>
+    <p>exercice_title: {{ spellingHistory.exercice_title }}</p>
+    <p>exercice_difficulty: {{ spellingHistory.exercice_difficulty }}</p>
+    <p>sh_text: {{ spellingHistory.sh_text }}</p>
+    <p>sh_result: {{ spellingHistory.sh_result }}</p>
   </div>
+</div>

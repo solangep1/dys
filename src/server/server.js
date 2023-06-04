@@ -54,6 +54,28 @@ app.get('/user/:id', cors(), function (req, res) {
     );
 });
 
+  //Création d'un nouvelle utilisateur
+  app.post('/user/create', function (req, res) {
+ 
+    //let result_id = req.body.result_id;
+   let user_lastname= req.body.user_lastname;
+   let user_firstname=req.body.user_firstname;
+   let user_email= req.body.user_email
+   let user_dateofbirth = req.body.user_dateofbirth;
+   let user_mdp=req.body.user_mdp;
+   let user_type=req.body.user_type;
+
+   console.log(req.body)
+
+   dbConn.query("INSERT INTO users SET user_lastname=?,user_firstname=?,user_email=?,user_dateofbirth=?,user_mdp=?,user_type=?", [user_lastname, user_firstname,user_email,user_dateofbirth,user_mdp,user_type,], function (error, results, fields) {
+       
+       if (error) throw error;
+       
+       return res.send({ error: false, data: results, message: 'New user has been created successfully.' });
+   });
+   
+});
+
 //Vérification des identifiants de connexion. Si correcter alors on renvoie id utilisateur sinon 0
 app.get('/connexion/:user_email/:user_mdp', cors(), function (req, res) {
     var user_email = req.params.user_email;
@@ -115,6 +137,47 @@ app.post('/add_result', function (req, res) {
     
 });
 
+//Récupération de la liste des exercices avec le dernier résultat obtenus d'un utilisateur pour chaque exercice
+app.get('/result/:id/:exercice_type', cors(), function (req, res) {
+    var userId = req.params.id;
+    var exercice_type = req.params.exercice_type;
+    dbConn.query(
+        "SELECT \
+            CASE \
+                WHEN r.result_score IS NOT NULL THEN CONCAT(r.result_score) \
+                ELSE 0 \
+            END AS status \
+        FROM \
+            exercice e \
+        LEFT JOIN ( \
+            SELECT \
+                r1.exercice_id, \
+                r1.result_score \
+            FROM \
+                result r1 \
+            INNER JOIN ( \
+                SELECT \
+                    exercice_id, \
+                    MAX(result_date) AS max_date \
+                FROM \
+                    result \
+                WHERE \
+                    user_id = ? \
+                GROUP BY \
+                    exercice_id \
+            ) r2 ON r1.exercice_id = r2.exercice_id AND r1.result_date = r2.max_date \
+        ) r ON e.exercice_id = r.exercice_id \
+        WHERE \
+            e.exercice_type = ?",
+        [userId, exercice_type],
+        function (error, results, fields) {
+            if (error) throw error;
+            return res.send(results);
+        }
+    );
+});
+
+
 ///////////////////////
 /////   Exercice  /////
 //////////////////////
@@ -136,7 +199,7 @@ app.get('/exercice', cors(), function (req, res) {
 app.get('/spellingh/:exercice_id', cors(), function (req, res) {
     var exercice_id = req.params.exercice_id;
     dbConn.query(
-        "SELECT * FROM `spellinghistory` WHERE exercice_id = ?",
+        "SELECT * FROM `spellinghistory` WHERE exercice_id = ? LIMIT 1 ",
         [exercice_id],
         function (error, results, fields) {
             if (error) throw error;

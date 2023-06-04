@@ -1,8 +1,9 @@
 import { ExerciceModel } from "./exercice.models";
-export interface SHModel extends ExerciceModel {
+export interface SHModel {
     sh_id : number;
-    sh_title : string;
+    exercice_id:number
+    exercice_title:string
+    exercice_difficulty: number
     sh_text : string;
-    sh_world : string;
-    sh_difficulty : Date;  
+    sh_result: string;
 }
