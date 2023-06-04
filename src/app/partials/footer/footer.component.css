@@ -1,11 +1,13 @@
-ul, li{
+l,
+li {
     display: inline-block;
     padding-top: 0px;
     padding-bottom: 0px;
-    margin:0;
+    margin: 0;
 
 }
-.liens{
+
+.liens {
     display: inline-block;
     text-align: center;
     color: #2b3467;
@@ -17,24 +19,25 @@ ul, li{
     padding-left: 10px;
     padding-right: 10px;
 }
-.liens:hover{
+
+.liens:hover {
     background: #2b3467;
-    color : #f1baa6;
-    transition: 0,2s;
+    color: #f1baa6;
+    transition: 0, 2s;
 }
-.footer{
-    background:#f1baa6;
+
+.footer {
+    background: #f1baa6;
     text-align: center;
-    position: sticky;
+    position: flex;
 
 }
+
 .footer li {
-    display:inline-block;
+    display: inline-block;
 }
-footer{
-    position:relative;
+
+footer {
+    position: relative;
     bottom: 0;
 }
-
-
-
