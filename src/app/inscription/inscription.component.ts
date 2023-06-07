@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { CrudService } from 'src/service/crud.service';
+import { UserModel } from 'src/models/user.model';
+
+
 
 @Component({
   selector: 'app-inscription',
@@ -10,34 +14,38 @@ export class InscriptionComponent {
   prenom: string = '';
   nom: string = '';
   email: string = '';
-  dateNaissance: string = '';
+  dateNaissance: Date = new Date('1990-01-01');
   motDePasse: string = '';
   confirmationMotDePasse: string = '';
 
-  constructor(private http: HttpClient) {}
+
+
+  constructor(private http: HttpClient,
+    private crudService: CrudService,
+    ) {}
 
   submitForm() {
     console.log('Soumission du formulaire');
-    // Crée un objet contenant les données à envoyer
-    const userData = {
-      prenom: this.prenom,
-      nom: this.nom,
-      email: this.email,
-      dateNaissance: this.dateNaissance,
-      motDePasse: this.motDePasse
+    const newUser: UserModel = {
+      user_id: 1,
+      user_lastname: this.prenom,
+      user_firstname: this.prenom,
+      user_email: this.email,
+      user_dateofbirth: this.dateNaissance,
+      user_mdp: this.motDePasse,
+      user_type: 1
     };
+    
 
-    // Envoie les données à ton serveur en utilisant une requête HTTP
-    this.http.post('http://localhost:3000/user', userData)
-      .subscribe(
-        response => {
-          console.log('Inscription réussie !');
-          // Gère la réponse du serveur après l'inscription réussie, si nécessaire
-        },
-        error => {
-          console.error('Erreur lors de l\'inscription :', error);
-          // Gère les erreurs lors de l'inscription, si nécessaire
-        }
-      );
+    this.crudService.Inscription(newUser)
+  .subscribe(
+    response => {
+      console.log('Utilisateur créé avec succès :', response);
+    },
+    error => {
+      console.error('Erreur lors de la création de l\'utilisateur :', error);
+    }
+  );
+
   }
 }

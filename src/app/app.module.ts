@@ -8,6 +8,7 @@ import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { ResultatsComponent } from './resultats/resultats.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { CrudService } from 'src/service/crud.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CrudService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
