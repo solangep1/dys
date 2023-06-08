@@ -10,6 +10,7 @@ import { NewReglesExoComponent } from './new-regles-exo/regles-exo.component';
 import { ReglesOrthoComponent } from './regles-ortho/regles-ortho.component';
 import { NewConditionsComponent } from './new-conditions/conditions.component';
 import { ResultatsListComponent } from './resultats-list/resultats-list.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 import { AuthComponent } from './auth/auth.component';
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'reglesOrtho', component: ReglesOrthoComponent },
   { path: 'conditions', component: NewConditionsComponent },
   { path: 'resultats', component: ResultatsListComponent },
+  { path: 'inscription', component: InscriptionComponent },
 
 ];
 

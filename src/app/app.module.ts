@@ -12,6 +12,7 @@ import { ExerciceListComponent } from './exercice-list/exercice-list.component';
 import { NewReglesExoComponent } from './new-regles-exo/regles-exo.component';
 import { ReglesOrthoComponent } from './regles-ortho/regles-ortho.component';
 import { NewConditionsComponent } from './new-conditions/conditions.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -35,6 +36,7 @@ import { ReglesPageComponent } from './regles-page/regles-page.component';
     ReglesPageComponent,
     ReglesOrthoComponent,
     NewConditionsComponent,
+    InscriptionComponent,
   ],
   imports: [
     BrowserModule,
