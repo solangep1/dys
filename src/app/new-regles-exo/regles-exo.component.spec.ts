@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewReglesExoComponent } from './new-regles-exo.component';
+import { NewReglesExoComponent } from './regles-exo.component';
 
 describe('NewReglesExoComponent', () => {
   let component: NewReglesExoComponent;
