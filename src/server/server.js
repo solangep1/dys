@@ -64,11 +64,9 @@ app.get('/connexion/:user_email/:user_mdp', cors(), function (req, res) {
             if (error) throw error;
 
             if (results.length > 0) {
-                // L'utilisateur existe, renvoyer l'id de l'utilisateur
-                return res.send({ user_id: results[0].user_id });
+                return res.send(String(results[0].user_id));
             } else {
-                // L'utilisateur n'existe pas, renvoyer 0
-                return res.send({ user_id: 0 });
+                return res.send("0");
             }
         }
     );

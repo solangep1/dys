@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-exercice-hdo-list',
@@ -22,13 +23,21 @@ export class ExerciceHdoListComponent implements OnInit {
   displayedColumns: string[] = ['title', 'difficulty', 'score'];
   resultList: any[] = [];
 
-  constructor(private crudService: CrudService, private readonly router: Router) { }
+  constructor(private crudService: CrudService, private readonly router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-
+    this.VerifIdentification()
     this.initExerciceList();
     this.initResultList();
+  }
 
+  VerifIdentification(){
+    const userId = this.authService.getUserId();
+    if (!this.authService.isLoggedIn()) {
+      this.router.navigate(['/connexion']);
+    }else{
+    }
+    console.log('Identifiant de l\'utilisateur :', userId);    
   }
 
   initExerciceList() {

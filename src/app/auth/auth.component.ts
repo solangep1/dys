@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/service/crud.service';
-
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -16,23 +16,23 @@ export class AuthComponent {
 
   constructor(private http: HttpClient,
     private crudService: CrudService,
+    private authService: AuthService
     ) {}
 
   email: string = '';
   password: string = '';
 
 
-  authentification (){
-    this.crudService.VerificationConnexion(this.email,this.password).subscribe(
-      response => {
-        console.log('Connexion établis :', response);
-      },
-      error => {
-        console.error('identifiant invalide:', error);
-      }
-    );
-
-    console.log("test bouton connexion")
+  login (){
+    this.authService.login(this.email, this.password);
+    console.log("test bouton connexion");
   }
   
+  logout() {
+    this.authService.logout();
+  }
+
+  isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
 }
