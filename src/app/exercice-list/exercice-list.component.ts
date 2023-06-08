@@ -15,4 +15,8 @@ export class ExerciceListComponent {
   navigateToHdoList() {
     this.router.navigateByUrl("exerciceHdoList")
   }
+
+  navigateReglesJeux() {
+    this.router.navigateByUrl("reglesExo")
+  }
 }

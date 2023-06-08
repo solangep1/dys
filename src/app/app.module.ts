@@ -4,13 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './partials/header/header.component';
 
 import { FooterComponent } from './partials/footer/footer.component';
-import { ResultatsComponent } from './resultats/resultats.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ExerciceHDOComponent } from './exercice-hdo/exercice-hdo.component';
-import { ExerciceHdoListComponent } from './exercice-hdo-list/exercice-hdo-list.component';
 import { ExerciceListComponent } from './exercice-list/exercice-list.component';
+import { NewReglesExoComponent } from './new-regles-exo/regles-exo.component';
+import { ReglesOrthoComponent } from './regles-ortho/regles-ortho.component';
+import { NewConditionsComponent } from './new-conditions/conditions.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -20,16 +21,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CrudService } from 'src/service/crud.service';
 import { AuthComponent } from './auth/auth.component';
+import { ReglesPageComponent } from './regles-page/regles-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    ResultatsComponent,
     ExerciceHDOComponent,
     ExerciceListComponent,
     AuthComponent,
+    NewReglesExoComponent,
+    ReglesPageComponent,
+    ReglesOrthoComponent,
+    NewConditionsComponent,
   ],
   imports: [
     BrowserModule,

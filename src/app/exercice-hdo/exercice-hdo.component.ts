@@ -36,6 +36,8 @@ export class ExerciceHDOComponent implements OnInit {
     result_score: 0,
     resutl_goodanswer: 0,
     result_badanswer: 0,
+    exercice_title: "",
+    exercice_type: "",
   };
 
   constructor(
