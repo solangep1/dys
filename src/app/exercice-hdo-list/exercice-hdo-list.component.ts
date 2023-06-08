@@ -22,22 +22,12 @@ export class ExerciceHdoListComponent implements OnInit {
   dataSource = new MatTableDataSource<any>;
   displayedColumns: string[] = ['title', 'difficulty', 'score'];
   resultList: any[] = [];
-
+  userId: Number = this.authService.getUserId();
   constructor(private crudService: CrudService, private readonly router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.VerifIdentification()
     this.initExerciceList();
     this.initResultList();
-  }
-
-  VerifIdentification(){
-    const userId = this.authService.getUserId();
-    if (!this.authService.isLoggedIn()) {
-      this.router.navigate(['/connexion']);
-    }else{
-    }
-    console.log('Identifiant de l\'utilisateur :', userId);    
   }
 
   initExerciceList() {

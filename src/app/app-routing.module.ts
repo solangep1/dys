@@ -14,6 +14,7 @@ import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
+  { path: "", component: AuthComponent },
   { path: "header", component: HeaderComponent },
   {path: "connexion",component: AuthComponent},
   { path: "footer", component: FooterComponent },

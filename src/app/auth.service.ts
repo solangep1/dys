@@ -16,13 +16,8 @@ export class AuthService {
 
     this.crudService.VerificationConnexion(email,password).subscribe(
       response => {
-        console.log('Connexion établis :', response);
+        localStorage.setItem('userId', response.toString());        
         this.loggedIn = true;
-        localStorage.setItem('userId', response.toString());
-        localStorage.setItem('userId', response.toString());
-
-        const storedValue: String= localStorage.getItem('userId') || "";
-        console.log(storedValue); // Output: null 
       },
       error => {
         console.error('identifiant invalide:', error);
@@ -40,7 +35,6 @@ export class AuthService {
 
   isLoggedIn() {
     return this.loggedIn;
-
   }
   getUserId() {
     const storedUserId = localStorage.getItem('userId');

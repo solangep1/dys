@@ -8,6 +8,10 @@ app.use(bodyParser.urlencoded({
 
 var cors = require('cors');
 
+app.use(cors({
+    origin: 'http://localhost:4200'
+  }));
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://localhost:3308");
     res.header("Access-Control-Allow-Methods", "GET , PUT , POST , DELETE");
@@ -103,7 +107,7 @@ app.post('/user/create', function (req, res) {
 app.get('/user/result/:id', cors(), function (req, res) {
     var userId = req.params.id;
     dbConn.query(
-        "SELECT * FROM `result` WHERE user_id = ?",
+        "SELECT r.*, e.exercice_title, e.exercice_type FROM `result` r JOIN `exercice` e ON r.exercice_id = e.exercice_id WHERE r.user_id = ?",
         [userId],
         function (error, results, fields) {
             if (error) throw error;

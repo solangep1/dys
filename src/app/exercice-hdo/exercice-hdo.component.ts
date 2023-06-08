@@ -4,6 +4,7 @@ import { SHModel } from 'src/models/sh.models';
 import { ActivatedRoute } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ResultModel } from 'src/models/result.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-exercice-hdo',
@@ -18,6 +19,7 @@ export class ExerciceHDOComponent implements OnInit {
   userInputs: string[] = [];
   showScore = false;
   score = 0;
+  userId: number = this.authservice.getUserId();
 
   spellingHistory: SHModel = {
     sh_id: 123,
@@ -43,7 +45,8 @@ export class ExerciceHDOComponent implements OnInit {
   constructor(
     private crudService: CrudService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private authservice: AuthService
   ) { }
 
   ngOnInit(): void {

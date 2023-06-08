@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/service/crud.service';
 import { AuthService } from '../auth.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -16,7 +16,8 @@ export class AuthComponent {
 
   constructor(private http: HttpClient,
     private crudService: CrudService,
-    private authService: AuthService
+    private authService: AuthService,
+    private readonly router: Router 
     ) {}
 
   email: string = '';
@@ -25,7 +26,10 @@ export class AuthComponent {
 
   login (){
     this.authService.login(this.email, this.password);
-    console.log("test bouton connexion");
+    
+    if(this.authService.isLoggedIn()){
+      this.router.navigateByUrl("exerciceList");
+    }
   }
   
   logout() {

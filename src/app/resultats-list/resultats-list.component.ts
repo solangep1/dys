@@ -7,6 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ResultModel } from 'src/models/result.model';
+import { AuthService } from '../auth.service';
 //import * as Highcharts from 'highcharts';
 
 @Component({
@@ -22,6 +23,7 @@ export class ResultatsListComponent implements OnInit {
   resultList: ResultModel[] = [];
   dataSource = new MatTableDataSource(this.resultList);
   displayedColumns: string[] = ['exercice', 'title', 'date', 'score'];
+
 
   public options: any = {
     Chart: {
@@ -67,12 +69,12 @@ export class ResultatsListComponent implements OnInit {
     }]
   }
 
-  constructor(private crudService: CrudService, private readonly router: Router) {
+  constructor(private crudService: CrudService, private readonly router: Router, private authservice: AuthService) {
 
   }
 
   ngOnInit(): void {
-    this.crudService.getUserResult(1)
+    this.crudService.getUserResult(this.authservice.getUserId())
       .subscribe(
         exercices => {
           this.resultList = exercices;
