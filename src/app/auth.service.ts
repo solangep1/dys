@@ -18,6 +18,8 @@ export class AuthService {
       response => {
         localStorage.setItem('userId', response.toString());        
         this.loggedIn = true;
+        localStorage.setItem('isLoggedIn', true.toString());        
+
       },
       error => {
         console.error('identifiant invalide:', error);
@@ -30,11 +32,15 @@ export class AuthService {
   logout() {
     this.loggedIn = false;
     localStorage.removeItem('userId');
+    localStorage.removeItem('isLoggedIn');
     this.router.navigateByUrl('connexion')
   }
 
   isLoggedIn() {
-    return this.loggedIn;
+    if(localStorage.getItem('isLoggedIn') == "true"){
+      return true;
+    }
+    return false;
   }
 
   getUserId() {

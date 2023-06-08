@@ -26,7 +26,6 @@ export class AuthComponent {
 
   login (){
     this.authService.login(this.email, this.password);
-    
     if(this.authService.isLoggedIn()){
       this.router.navigateByUrl("exerciceList");
     }
