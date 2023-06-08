@@ -12,6 +12,6 @@ export class FooterComponent {
   ) { }
 
   navigateToConditions() {
-    this.router.navigateByUrl("exerciceHdoList")
+    this.router.navigateByUrl("consitions")
   }
 }
