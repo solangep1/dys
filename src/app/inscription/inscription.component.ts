@@ -22,10 +22,18 @@ export class InscriptionComponent {
 
   constructor(private http: HttpClient,
     private crudService: CrudService,
-    ) {}
+  ) { }
 
   submitForm() {
     console.log('Soumission du formulaire');
+
+    if (this.motDePasse !== this.confirmationMotDePasse) {
+      const errorMessage = 'Les mots de passe ne correspondent pas';
+      alert(errorMessage);
+      console.error('Les mots de passe ne correspondent pas');
+      return;
+    }
+
     const newUser: UserModel = {
       user_id: 1,
       user_lastname: this.prenom,
@@ -35,17 +43,15 @@ export class InscriptionComponent {
       user_mdp: this.motDePasse,
       user_type: 1
     };
-    
 
     this.crudService.Inscription(newUser)
-  .subscribe(
-    response => {
-      console.log('Utilisateur créé avec succès :', response);
-    },
-    error => {
-      console.error('Erreur lors de la création de l\'utilisateur :', error);
-    }
-  );
-
+      .subscribe(
+        response => {
+          console.log('Utilisateur créé avec succès :', response);
+        },
+        error => {
+          console.error('Erreur lors de la création de l\'utilisateur :', error);
+        }
+      );
   }
 }
