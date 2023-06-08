@@ -20,4 +20,8 @@ export class HeaderComponent {
   reglesPage() {
     this.router.navigateByUrl("regles")
   }
+
+  navigateToResultats() {
+    this.router.navigateByUrl("resultats")
+  }
 }

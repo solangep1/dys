@@ -1,14 +1,15 @@
 <main>
     <h1>Complétez ce texte à trous avec les mots suivants :</h1>
+
+    <h3>Mots à remplacer</h3>
+    <p>{{ spellingHistory.sh_result }}</p>
+    <!-- Affiche les mots qui doivent être remplacés dans le texte -->
+
     <h3>{{ spellingHistory.exercice_title }}</h3>
     <!-- Affiche le titre de l'exercice -->
 
     <p [innerHTML]="replaceText(spellingHistory.sh_text)"></p>
     <!-- Affiche le texte de l'exercice avec des champs de saisie à la place des mots à remplacer -->
-
-    <h3>Mots à remplacer</h3>
-    <p>{{ spellingHistory.sh_result }}</p>
-    <!-- Affiche les mots qui doivent être remplacés dans le texte -->
 
     <button>Règles du jeu</button>
     <!-- Bouton pour afficher les règles du jeu -->

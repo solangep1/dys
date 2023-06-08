@@ -9,7 +9,7 @@ import { ReglesPageComponent } from './regles-page/regles-page.component';
 import { NewReglesExoComponent } from './new-regles-exo/regles-exo.component';
 import { ReglesOrthoComponent } from './regles-ortho/regles-ortho.component';
 import { NewConditionsComponent } from './new-conditions/conditions.component';
-
+import { ResultatsListComponent } from './resultats-list/resultats-list.component';
 
 
 const routes: Routes = [
@@ -22,6 +22,8 @@ const routes: Routes = [
   { path: 'reglesExo', component: NewReglesExoComponent },
   { path: 'reglesOrtho', component: ReglesOrthoComponent },
   { path: 'conditions', component: NewConditionsComponent },
+  { path: 'resultats', component: ResultatsListComponent },
+
 ];
 
 @NgModule({
