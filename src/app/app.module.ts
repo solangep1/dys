@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CrudService } from 'src/service/crud.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CrudService } from 'src/service/crud.service';
     ResultatsComponent,
     ExerciceHDOComponent,
     ExerciceListComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
