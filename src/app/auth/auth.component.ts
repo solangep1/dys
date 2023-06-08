@@ -39,4 +39,8 @@ export class AuthComponent {
   isLoggedIn() {
     return this.authService.isLoggedIn();
   }
+
+  inscription(){
+    this.router.navigateByUrl('inscription');
+  }
 }

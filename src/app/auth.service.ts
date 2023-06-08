@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/service/crud.service';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private loggedIn: boolean = false;
-  constructor(private http: HttpClient,private crudService: CrudService,) 
+  constructor(private http: HttpClient,private crudService: CrudService,private readonly router: Router) 
   {  }
     private userId: number = 0;
 
@@ -29,8 +29,8 @@ export class AuthService {
 
   logout() {
     this.loggedIn = false;
-    console.log("je me suis lancer");
     localStorage.removeItem('userId');
+    this.router.navigateByUrl('connexion')
   }
 
   isLoggedIn() {

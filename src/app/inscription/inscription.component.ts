@@ -50,11 +50,12 @@ export class InscriptionComponent {
       .subscribe(
         response => {
           console.log('Utilisateur créé avec succès :', response);
-          this.router.navigateByUrl("exerciceList")
+          this.router.navigateByUrl("connexion")
         },
         error => {
           console.error('Erreur lors de la création de l\'utilisateur :', error);
         }
       );
+
   }
 }
