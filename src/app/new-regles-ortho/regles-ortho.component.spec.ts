@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewReglesOrthoComponent } from './new-regles-ortho.component';
+import { NewReglesOrthoComponent } from './regles-ortho.component';
 
 describe('NewReglesOrthoComponent', () => {
   let component: NewReglesOrthoComponent;

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './partials/header/header.component';
 import { FooterComponent } from './partials/footer/footer.component';
 import { ResultatsComponent } from './resultats/resultats.component';
-import { NewReglesOrthoComponent } from './new-regles-ortho/new-regles-ortho.component';
+import { NewReglesOrthoComponent } from './new-regles-ortho/regles-ortho.component';
 
 @NgModule({
   declarations: [
