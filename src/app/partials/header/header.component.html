@@ -13,16 +13,16 @@
     <nav class="bandeau">
         <ul class>
             <li>
-                <a class="liens" href="header.html">Accueil</a>
+                <a class="liens" href="#">Accueil</a>
             </li>
             <li>
-                <a class="liens" href="#">Exercices</a>
+                <a class="liens" (click)="exercicePage()">Exercices</a>
             </li>
             <li>
-                <a class="liens" (click)="resultList()">Résultats</a>
+                <a class="liens" (click)="navigateToResultats()">Résultats</a>
             </li>
             <li>
-                <a class="liens" href="#">Règles</a>
+                <a class="liens" (click)="reglesPage()">Règles</a>
             </li>
         </ul>
     </nav>

@@ -13,7 +13,15 @@ export class HeaderComponent {
     private readonly router: Router,
   ) { }
 
-  resultList() {
-    this.router.navigateByUrl("exerciceHdoList")
+  exercicePage() {
+    this.router.navigateByUrl("exerciceList")
+  }
+
+  reglesPage() {
+    this.router.navigateByUrl("regles")
+  }
+
+  navigateToResultats() {
+    this.router.navigateByUrl("resultats")
   }
 }
