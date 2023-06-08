@@ -9,8 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ExerciceHDOComponent } from './exercice-hdo/exercice-hdo.component';
-import { ExerciceHdoListComponent } from './exercice-hdo-list/exercice-hdo-list.component';
 import { ExerciceListComponent } from './exercice-list/exercice-list.component';
+import { NewReglesExoComponent } from './new-regles-exo/regles-exo.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -19,6 +19,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { CrudService } from 'src/service/crud.service';
+import { ReglesPageComponent } from './regles-page/regles-page.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import { CrudService } from 'src/service/crud.service';
     ResultatsComponent,
     ExerciceHDOComponent,
     ExerciceListComponent,
+    NewReglesExoComponent,
+    ReglesPageComponent,
   ],
   imports: [
     BrowserModule,
