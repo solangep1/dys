@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ExerciceHDOComponent } from './exercice-hdo/exercice-hdo.component';
 import { ExerciceListComponent } from './exercice-list/exercice-list.component';
 import { NewReglesExoComponent } from './new-regles-exo/regles-exo.component';
+import { ReglesOrthoComponent } from './regles-ortho/regles-ortho.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -31,6 +32,7 @@ import { ReglesPageComponent } from './regles-page/regles-page.component';
     ExerciceListComponent,
     NewReglesExoComponent,
     ReglesPageComponent,
+    ReglesOrthoComponent,
   ],
   imports: [
     BrowserModule,

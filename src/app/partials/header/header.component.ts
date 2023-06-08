@@ -16,4 +16,8 @@ export class HeaderComponent {
   exercicePage() {
     this.router.navigateByUrl("exerciceList")
   }
+
+  reglesPage() {
+    this.router.navigateByUrl("regles")
+  }
 }

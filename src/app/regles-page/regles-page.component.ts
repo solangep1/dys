@@ -16,6 +16,6 @@ export class ReglesPageComponent {
   }
 
   navigateReglesOrtho() {
-    this.router.navigateByUrl("")
+    this.router.navigateByUrl("reglesOrtho")
   }
 }
