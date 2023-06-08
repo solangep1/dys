@@ -2,16 +2,17 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-footer',
-  templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  selector: 'app-exercice-list',
+  templateUrl: './exercice-list.component.html',
+  styleUrls: ['./exercice-list.component.css']
 })
-export class FooterComponent {
+
+export class ExerciceListComponent {
   constructor(
     private readonly router: Router,
   ) { }
 
-  navigateToConditions() {
+  navigateToHdoList() {
     this.router.navigateByUrl("exerciceHdoList")
   }
 }
