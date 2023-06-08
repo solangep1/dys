@@ -8,7 +8,7 @@ import { ResultatsComponent } from './resultats/resultats.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { ExerciceHdoListComponent } from './exercice-hdo-list/exercice-hdo-list.component';
+import { ResultatsListComponent } from './resultats-list/resultats-list.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';

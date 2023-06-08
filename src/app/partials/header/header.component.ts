@@ -13,7 +13,7 @@ export class HeaderComponent {
     private readonly router: Router,
   ) { }
 
-  hdoList() {
+  resultList() {
     this.router.navigateByUrl("exerciceHdoList")
   }
 }

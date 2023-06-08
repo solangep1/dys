@@ -12,14 +12,14 @@ import * as Highcharts from 'highcharts';
 
 
 @Component({
-  selector: 'app-exercice-hdo-list',
-  templateUrl: './exercice-hdo-list.component.html',
-  styleUrls: ['./exercice-hdo-list.component.css'],
+  selector: 'app-resultats-list',
+  templateUrl: './resultats-list.component.html',
+  styleUrls: ['./resultats-list.component.css'],
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, MatTableModule],
 })
 
-export class ExerciceHdoListComponent implements OnInit {
+export class ResultatsListComponent implements OnInit {
 
   exerciceList: ExerciceModel[] = [];
   dataSource = new MatTableDataSource(this.exerciceList);

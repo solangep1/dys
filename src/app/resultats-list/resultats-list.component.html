@@ -1,12 +1,13 @@
-<mat-form-field>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Recherche" #input>
-</mat-form-field>
 
 <main>
 
     <p>Les résultats de vos performances ? C'est par là : </p>
 
     <div id="container"></div>
+
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Recherche" #input>
+    </mat-form-field>
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Position Column -->

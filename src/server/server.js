@@ -1,5 +1,9 @@
-var express = require('express');
-var app = express();
+///////////////////////
+//Install express server
+const express = require('express');
+const path = require('path');
+const app = express();
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -122,12 +126,7 @@ app.listen(3000, function () {
 
 module.exports = app;
 
-///////////////////////
-//Install express server
-const express = require('express');
-const path = require('path');
 
-const app = express();
 
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/angular-app-heroku'));
