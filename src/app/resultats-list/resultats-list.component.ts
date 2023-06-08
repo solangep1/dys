@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { ExerciceModel } from 'src/models/exercice.models';
 import { CrudService } from 'src/service/crud.service';
 import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';

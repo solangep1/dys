@@ -29,13 +29,14 @@ export class AuthService {
 
   logout() {
     this.loggedIn = false;
+    console.log("je me suis lancer");
     localStorage.removeItem('userId');
-
   }
 
   isLoggedIn() {
     return this.loggedIn;
   }
+
   getUserId() {
     const storedUserId = localStorage.getItem('userId');
     this.userId = Number(storedUserId);

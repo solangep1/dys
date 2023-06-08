@@ -16,7 +16,7 @@ export class AuthComponent {
 
   constructor(private http: HttpClient,
     private crudService: CrudService,
-    private authService: AuthService,
+    public authService: AuthService,
     private readonly router: Router 
     ) {}
 
