@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewConditionsComponent } from './new-conditions.component';
+import { NewConditionsComponent } from './conditions.component';
 
 describe('NewConditionsComponent', () => {
   let component: NewConditionsComponent;

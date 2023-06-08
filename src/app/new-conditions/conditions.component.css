@@ -2,6 +2,7 @@ body {
     margin: 0px;
     padding: 0px;
     background: #FFF;
+    text-align: justify;
   }
   
   h4 {
@@ -20,7 +21,7 @@ body {
     margin-bottom: 50px;
   }
 
-.un {
+.paragraphe {
     width: auto;
     height: auto;
     background: rgb(241, 186, 166, 50%);
@@ -111,25 +112,6 @@ body {
     text-decoration: underline;
   }
   
-  
-  .logo {
-    padding: 0px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 20%;
-  }
-  
-  
-  .header-buttons {
-    text-align: center;
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 250px 250px;
-    grid-template-columns: 250px 250px;
-    justify-content: center;
-    height: 80px;
-  }
 
   .container {
     padding-right: 15px;
