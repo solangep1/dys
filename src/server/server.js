@@ -5,13 +5,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 var cors = require('cors');
+
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "http://localhost:3308");
     res.header("Access-Control-Allow-Methods", "GET , PUT , POST , DELETE");
     res.header("Access-Control-Allow-Headers", "Content-Type, x-requested-with");
     next(); // Important
 })
+
 var mysql = require('mysql');
 // connection configurations
 var dbConn = mysql.createConnection({
@@ -20,17 +23,22 @@ var dbConn = mysql.createConnection({
     password: '',
     database: 'dys*bdd'
 });
+
 const corsOptions = {
     origin: 'http://localhost:4200', // Autoriser les requêtes depuis ce domaine
     optionsSuccessStatus: 200 // Répondre avec un statut 200 pour les requêtes preflight
 };
+
 // Activer CORS pour toutes les routes
 app.use(cors(corsOptions));
+
+
 // connect to database
 dbConn.connect();
 /////////////////////
 /////   User    /////
 ////////////////////
+
 //récupération des inforrmations de l'utisateur en fonction de son id
 app.get('/user/:id', cors(), function (req, res) {
     var userId = req.params.id;
@@ -43,15 +51,18 @@ app.get('/user/:id', cors(), function (req, res) {
         }
     );
 });
+
 //Vérification des identifiants de connexion. Si correcter alors on renvoie id utilisateur sinon 0
 app.get('/connexion/:user_email/:user_mdp', cors(), function (req, res) {
     var user_email = req.params.user_email;
     var user_mdp = req.params.user_mdp;
+
     dbConn.query(
         "SELECT user_id FROM `users` WHERE user_email = ? AND user_mdp = ?",
         [user_email, user_mdp],
         function (error, results, fields) {
             if (error) throw error;
+
             if (results.length > 0) {
                 // L'utilisateur existe, renvoyer l'id de l'utilisateur
                 return res.send({ user_id: results[0].user_id });
@@ -62,8 +73,10 @@ app.get('/connexion/:user_email/:user_mdp', cors(), function (req, res) {
         }
     );
 });
+
 //Création d'un nouvelle utilisateur
 app.post('/user/create', function (req, res) {
+
     //let result_id = req.body.result_id;
     let user_lastname = req.body.user_lastname;
     let user_firstname = req.body.user_firstname;
@@ -71,15 +84,23 @@ app.post('/user/create', function (req, res) {
     let user_dateofbirth = req.body.user_dateofbirth;
     let user_mdp = req.body.user_mdp;
     let user_type = req.body.user_type;
+
     console.log(req.body)
+
     dbConn.query("INSERT INTO users SET user_lastname=?,user_firstname=?,user_email=?,user_dateofbirth=?,user_mdp=?,user_type=?", [user_lastname, user_firstname, user_email, user_dateofbirth, user_mdp, user_type,], function (error, results, fields) {
+
         if (error) throw error;
+
         return res.send({ error: false, data: results, message: 'New user has been created successfully.' });
     });
+
 });
+
+
 ///////////////////////
 /////   Result    /////
 //////////////////////
+
 //Récupération des résultats d'un utilisateur
 app.get('/user/result/:id', cors(), function (req, res) {
     var userId = req.params.id;
@@ -92,8 +113,10 @@ app.get('/user/result/:id', cors(), function (req, res) {
         }
     );
 });
+
 // Ajout d'un nouveau resultat
 app.post('/add_result', function (req, res) {
+
     //let result_id = req.body.result_id;
     let user_id = req.body.user_id;
     let result_date = req.body.result_date;
@@ -102,11 +125,16 @@ app.post('/add_result', function (req, res) {
     let result_goodanswer = req.body.resutl_goodanswer;
     let result_badanswer = req.body.result_badanswer;
     console.log(req.body)
+
     dbConn.query("INSERT INTO result SET user_id=?,result_date=?,exercice_id=?,result_score=?,result_goodanswer=?,result_badanswer=?", [user_id, result_date, exercice_id, result_score, result_goodanswer, result_badanswer,], function (error, results, fields) {
+
         if (error) throw error;
+
         return res.send({ error: false, data: results, message: 'New result has been created successfully.' });
     });
+
 });
+
 //Récupération de la liste des exercices avec le dernier résultat obtenus d'un utilisateur pour chaque exercice
 app.get('/result/:id/:exercice_type', cors(), function (req, res) {
     var userId = req.params.id;
@@ -146,9 +174,11 @@ app.get('/result/:id/:exercice_type', cors(), function (req, res) {
         }
     );
 });
+
 ///////////////////////
 /////   Exercice  /////
 //////////////////////
+
 //Récupération de la liste des exercices
 app.get('/exercice/:exercice_type', cors(), function (req, res) {
     var exercice_type = req.params.exercice_type;
@@ -161,6 +191,7 @@ app.get('/exercice/:exercice_type', cors(), function (req, res) {
         }
     );
 });
+
 ///////////////////////
 /////   SpellingH /////
 //////////////////////
@@ -176,8 +207,22 @@ app.get('/spellingh/:exercice_id', cors(), function (req, res) {
         }
     );
 });
+
 // définir le branch
 app.listen(3000, function () {
     console.log('Node app is running on port 3000');
 });
+
 module.exports = app;
+
+
+
+// Serve only the static files form the dist directory
+app.use(express.static('./dist/angular-app-heroku'));
+
+app.get('/*', (req, res) =>
+    res.sendFile('index.html', { root: 'dist/angular-app-heroku/' }),
+);
+
+// Start the app by listening on the default Heroku port
+app.listen(process.env.PORT || 8080);

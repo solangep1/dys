@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from 'src/service/crud.service';
 import { UserModel } from 'src/models/user.model';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +22,9 @@ export class InscriptionComponent {
 
   constructor(private http: HttpClient,
     private crudService: CrudService,
+    private readonly router: Router,
   ) { }
+
 
   submitForm() {
     console.log('Soumission du formulaire');
@@ -48,6 +50,7 @@ export class InscriptionComponent {
       .subscribe(
         response => {
           console.log('Utilisateur créé avec succès :', response);
+          this.router.navigateByUrl("exerciceList")
         },
         error => {
           console.error('Erreur lors de la création de l\'utilisateur :', error);
