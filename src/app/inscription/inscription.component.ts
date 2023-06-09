@@ -39,7 +39,7 @@ export class InscriptionComponent {
     const newUser: UserModel = {
       user_id: 1,
       user_lastname: this.prenom,
-      user_firstname: this.prenom,
+      user_firstname: this.nom,
       user_email: this.email,
       user_dateofbirth: this.dateNaissance,
       user_mdp: this.motDePasse,

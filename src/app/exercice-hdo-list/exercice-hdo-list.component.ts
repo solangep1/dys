@@ -22,7 +22,7 @@ export class ExerciceHdoListComponent implements OnInit {
   dataSource = new MatTableDataSource<any>;
   displayedColumns: string[] = ['title', 'difficulty', 'score'];
   resultList: any[] = [];
-  userId: Number = this.authService.getUserId();
+  userId: number = this.authService.getUserId();
   constructor(private crudService: CrudService, private readonly router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -43,7 +43,7 @@ export class ExerciceHdoListComponent implements OnInit {
   }
 
   initResultList() {
-    this.crudService.getListLastResultOfUser(1, 'SpellingHistory')
+    this.crudService.getListLastResultOfUser(this.userId, 'SpellingHistory')
       .subscribe(
         (data) => {
           this.resultList = data;

@@ -22,7 +22,7 @@ export class ResultatsListComponent implements OnInit {
   resultList: ResultModel[] = [];
   dataSource = new MatTableDataSource(this.resultList);
   displayedColumns: string[] = ['exercice', 'title', 'date', 'score'];
-
+  userId: number = this.authservice.getUserId();
 
   public options: any = {
     Chart: {
@@ -73,7 +73,7 @@ export class ResultatsListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.crudService.getUserResult(this.authservice.getUserId())
+    this.crudService.getUserResult(this.userId)
       .subscribe(
         exercices => {
           this.resultList = exercices;
@@ -83,8 +83,6 @@ export class ResultatsListComponent implements OnInit {
         error => {
           console.error(error);
         });
-
-    //Highcharts.chart('container', this.options)
 
   }
 

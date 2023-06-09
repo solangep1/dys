@@ -32,7 +32,7 @@ export class ExerciceHDOComponent implements OnInit {
 
   spellingHistoryResult: ResultModel = {
     result_id: 0,
-    user_id: 1,
+    user_id: this.userId,
     result_date: new Date(),
     exercice_id: this.spellingHistory.exercice_id,
     result_score: 0,
